@@ -12,7 +12,7 @@ const Terms = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6 relative overflow-hidden">
       {/* Subtle background circles for design */}
-      <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-100 rounded-full opacity-40 blur-3xl"></div>
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#F16D34]/10 rounded-full opacity-40 blur-3xl"></div>
       <div className="absolute bottom-[-100px] right-[-100px] w-[450px] h-[450px] bg-purple-100 rounded-full opacity-30 blur-3xl"></div>
 
       {/* Main card */}
@@ -21,7 +21,7 @@ const Terms = () => {
           Terms and Conditions
         </h1>
        <p className="text-xl  text-gray-800 mb-10 max-w-4xl mx-auto ">
-          Welcome to <span className="font-semibold text-pink-600">Zentrix</span>.  
+          Welcome to <span className="font-semibold text-[#F16D34]">Zentrix</span>.  
           By accessing or using our services, you agree to be bound by these Terms and Conditions.  
           Please read them carefully.
         </p>
@@ -29,7 +29,7 @@ const Terms = () => {
         {/* Section 1 */}
         <div className="mb-10">
           <h2 className=" flex items-center gap-2 text-xl  font-medium  border-b border-gray-200 pb-2 text-gray-800 leading-tight ">
-            <FaFileSignature className="w-6 h-6 text-pink-500" />
+            <FaFileSignature className="w-6 h-6 text-[#F16D34]" />
             Acceptance of Terms
           </h2>
          <p className="text-lg  text-gray-800 mt-4 max-w-4xl mx-auto ">
@@ -41,7 +41,7 @@ const Terms = () => {
         {/* Section 2 */}
         <div className="mb-10">
          <h2 className=" flex items-center gap-2 text-xl  font-medium  border-b border-gray-200 pb-2 text-gray-800 leading-tight ">
-            <GiGlobe className="w-6 h-6 text-pink-500" />
+            <GiGlobe className="w-6 h-6 text-[#F16D34]" />
             Service Usage
           </h2>
          <p className="text-lg  text-gray-800 mt-4 max-w-4xl mx-auto ">
@@ -68,7 +68,7 @@ const Terms = () => {
           For any questions, contact us at{" "}
           <Link
             href="mailto:support@zentrix.com"
-            className="text-pink-600 hover:text-pink-800 underline transition-colors duration-200"
+            className="text-[#F16D34] underline transition-colors duration-200"
           >
             support@zentrix.com
           </Link>.
