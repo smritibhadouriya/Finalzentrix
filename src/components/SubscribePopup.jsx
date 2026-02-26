@@ -12,7 +12,7 @@ const SubscribePopup = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 animate-fadeIn">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm  justify-center items-center z-50 animate-fadeIn">
       <div className="bg-white/90 p-8 rounded-2xl shadow-2xl max-w-sm w-full relative">
         {/* Close Button */}
         <button
@@ -37,7 +37,7 @@ const SubscribePopup = ({ isOpen, onClose }) => {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 mb-4 transition-all"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#292B97]  mb-4 transition-all"
             required
           />
           <button
@@ -60,6 +60,7 @@ const SubscribePopup = ({ isOpen, onClose }) => {
   </div>
 )}
     </div>
+    
   );
 };
 
