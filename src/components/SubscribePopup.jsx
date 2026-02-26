@@ -12,7 +12,7 @@ const SubscribePopup = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm  justify-center items-center z-50 animate-fadeIn">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm  flex justify-center items-center z-50 animate-fadeIn">
       <div className="bg-white/90 p-8 rounded-2xl shadow-2xl max-w-sm w-full relative">
         {/* Close Button */}
         <button
@@ -48,17 +48,17 @@ const SubscribePopup = ({ isOpen, onClose }) => {
            {loading ? "Subscribing..." : "Subscribe Now"}
           </button>
         </form>
+              {success && (
+  <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-lg text-sm text-center animate-fadeIn">
+  You have successfully subscribed!
+  </div>
+)}
 
         {/* Footer Note */}
         <p className="text-xs text-gray-500 mt-4 text-center">
           We respect your privacy. Unsubscribe anytime.
         </p>
       </div>
-      {success && (
-  <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-lg text-sm text-center animate-fadeIn">
-  You have successfully subscribed!
-  </div>
-)}
     </div>
     
   );
