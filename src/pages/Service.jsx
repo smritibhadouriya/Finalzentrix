@@ -298,7 +298,7 @@ const Service = () => {
     </div>
 
     {/* ==================== RIGHT - IMAGE ==================== */}
-    <div className="relative">
+    <div className=" mx-auto relative">
       <img
         src={config.background}
         alt={config.headline}
