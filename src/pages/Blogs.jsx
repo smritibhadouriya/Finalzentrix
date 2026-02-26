@@ -139,18 +139,21 @@ const Blog = () => {
                 const IconComponent = config?.icon ? iconMap[config.icon] : null;
 
                 return (
-                  <button
-                    key={service}
-                    onClick={() => setActiveTab(service)}
-                    className={`px-6 py-3 font-medium text-md md:text-lg transition-all rounded-full border duration-300 flex items-center gap-2 flex-shrink-0 mb-2
-                      ${activeTab === service
-                        ? 'border-2 border-gray-200 bg-black text-white'
-                        : 'text-gray-600 hover:text-black hover:border-2 hover:border-gray-200'
-                      }`}
-                  >
-                    {IconComponent && <IconComponent className="text-lg" />}
-                    {service}
-                  </button>
+              <button
+  key={service}
+  onClick={() => setActiveTab(service)}
+  className={`px-5 py-2.5 text-sm md:text-base font-medium transition-all duration-300 
+  rounded-full border flex items-center gap-2 flex-shrink-0 mb-2
+
+  ${
+    activeTab === service
+      ? "bg-[#292B97]/10 text-[#292B97] border-[#292B97]/20 shadow-sm"
+      : "bg-white text-gray-600 border-gray-200 hover:bg-gray-100 hover:text-black"
+  }`}
+>
+  {IconComponent && <IconComponent className="text-base" />}
+  {service}
+</button>
                 );
               })}
             </div>
@@ -158,16 +161,34 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Search Bar */}
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <input
-          type="text"
-          placeholder="Search Latest Articles"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full px-4 py-2 rounded-lg border bg-gray-50 border-gray-200 focus:outline-none focus:border-gray-300"
-        />
-      </div>
+     {/* Search Bar */}
+<div className="max-w-7xl mx-auto px-6 py-4">
+  <div className="relative">
+    
+    {/* Icon */}
+    <svg
+      className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
+      />
+    </svg>
+
+    <input
+      type="text"
+      placeholder="Search Latest Articles"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      className="w-full pl-12 pr-4 py-3 rounded-full border bg-gray-50 border-gray-200 focus:outline-none focus:border-gray-300 transition-all"
+    />
+  </div>
+</div>
 
       {/* Blogs Grid */}
       <section id="blogs-grid" className="pb-10">
@@ -181,22 +202,22 @@ const Blog = () => {
               {/* Featured Article */}
               {featuredArticle && (
                 <div
-                  className="relative rounded-lg overflow-hidden bg-indigo-600 text-white flex flex-col md:flex-row items-center mb-8 cursor-pointer"
+                  className="relative rounded-lg overflow-hidden bg-[#292B97] text-white flex flex-col md:flex-row items-start mb-10 cursor-pointer"
                   onClick={() => handleCardClick(featuredArticle.title)}
                   role="button"
                   tabIndex={0}
                 >
-                  <div className="p-8 md:w-1/2">
+                  <div className="p-5 md:w-1/2">
                     <h2 className="text-2xl md:text-3xl font-bold mb-4">{featuredArticle.title}</h2>
                     <p className="mb-4">{featuredArticle.desc}</p>
                     <p className="text-sm mb-2">
                       {featuredArticle.date} • {featuredArticle.readTime}
                     </p>
                     <p className="text-sm mb-4">Written by {featuredArticle.author}</p>
-                    <button className="bg-white text-indigo-600 px-4 py-2 rounded font-medium">Read Article</button>
+                    <button className="bg-white text-[#292B97] px-4 py-2 rounded font-medium">Read Article</button>
                   </div>
                   <div className="md:w-1/2">
-                    <img src={featuredArticle.image} alt={featuredArticle.title} className="w-full h-64 md:h-auto object-cover" />
+                    <img src={featuredArticle.image} alt={featuredArticle.title} className="w-full h-64 md:h-auto lg:h-70 object-cover" />
                   </div>
                 </div>
               )}
@@ -206,7 +227,7 @@ const Blog = () => {
                 {regularArticles.map((article, idx) => (
                   <div
                     key={idx}
-                    className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+                    className="bg-white rounded-lg shadow-md  border border-gray-300 overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
                     onClick={() => handleCardClick(article.title)}
                     role="button"
                     tabIndex={0}
@@ -238,7 +259,7 @@ const Blog = () => {
         <div className="text-center pb-10">
           <button
             onClick={handleLoadMore}
-            className="bg-gray-200 text-gray-800 px-6 py-3 rounded font-medium hover:bg-gray-300 transition"
+            className="bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-gray-300 transition"
           >
             Load More Articles
           </button>

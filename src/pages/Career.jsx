@@ -10,6 +10,7 @@ import hybrid from '../assets/imagesuse/hybrid.jpg';
 import {openPositions} from '../Data/Openpositions.js';
 import { useNavigate } from "react-router-dom";
 import SEO from "../components/seo/Seo";
+import Background from "../assets/imagesuse/background1.jpg";
 
 
 export default function Careers() {
@@ -134,7 +135,7 @@ const navigate = useNavigate();
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div className="rounded-3xl overflow-hidden shadow-2xl  order-1">
             <img
-              src="https://gorevity.com/wp-content/uploads/2025/08/A-team-working-at-a-table-with-laptops-charts-and-digital-icons-representing-AI-and-data-analysis.jpg"
+               src={Background}
               alt="Zentrix Media team collaborating on intelligent marketing strategies with AI"
               className="w-full h-[300px] md:h-[400px] object-cover hover:scale-105 transition-transform duration-1000"
             />

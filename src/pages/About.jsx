@@ -83,21 +83,31 @@ export default function AboutUs() {
     {
       name: "Omkar",
       desc: "Visionary leader with a passion for scaling brands through innovative digital strategies.",
+      role:"ceo",
       img: "https://media.gettyimages.com/id/1369199360/photo/portrait-of-a-handsome-young-businessman-working-in-office.jpg?s=612x612&w=0&k=20&c=ujyGdu8jKI2UB5515XZA33Tt4DBhDU19dKSTUTMZvrg=",
       alt: "Omkar"
     },
     {
       name: "Harry",
       desc: "Creative powerhouse crafting viral campaigns that blend culture and storytelling.",
+           role:"ceo",
       img: "https://media.gettyimages.com/id/1338145486/photo/businessman-working-on-a-laptop-computer-in-the-office.jpg?s=612x612&w=0&k=20&c=CNvAyzWFbYLzZsRHRxNbs8o-Sb8va1ullAJdm-JLPp0=",
       alt: "Harry"
     },
     {
       name: "Hermione",
       desc: "Data science expert turning insights into measurable ROI.",
+           role:"ceo",
       img: "https://media.gettyimages.com/id/1456194324/photo/confident-businesswoman-in-modern-office.jpg?s=612x612&w=0&k=20&c=az0Bfz3H9lFHDCzidKi6o1D_N07aTORXDlpyE0zuHaw=",
       alt: "Hermione"
-    }
+    },
+        {
+      name: "Harry",
+      desc: "Creative powerhouse crafting viral campaigns that blend culture and storytelling.",
+           role:"ceo",
+      img: "https://media.gettyimages.com/id/1338145486/photo/businessman-working-on-a-laptop-computer-in-the-office.jpg?s=612x612&w=0&k=20&c=CNvAyzWFbYLzZsRHRxNbs8o-Sb8va1ullAJdm-JLPp0=",
+      alt: "Harry"
+    },
   ];
 
   return (
@@ -201,32 +211,56 @@ dedicated to helping businesses thrive in the digital a
 
 
             {/* Meet the Founders */}
-      <section className="relative overflow-hidden py-13 bg-[#292B97]/5">
-        <div className="absolute inset-0 bg-white/10"></div>
-        <div className="relative max-w-6xl mx-auto px-4 md:px-8 text-center space-y-12">
-          <div>
-             <h1 className="font-inter font-bold text-[30px] md:text-[34.3px] leading-[45px] text-center  tracking-normal  mb-3 animate-fade-in-up">
-              Meet the Founders</h1>
-             <h2 className="text-xl  font-medium mb-2  leading-tight animate-fade-in-up">Young Blood. Old Souls. Sharp Minds.</h2>
+<section className="py-10 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-6">
+
+    {/* Heading */}
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold">
+        Meet the Founders
+      </h2>
+      <p className="text-gray-600 mt-3">
+        Young Blood. Old Souls. Sharp Minds.
+      </p>
+    </div>
+
+    {/* Cards */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto  gap-8">
+      {founders.map((founder, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+        >
+          {/* Image */}
+          <div className="h-64 overflow-hidden">
+            <img
+              src={founder.img}
+              alt={founder.alt}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3  gap-10">
-            {founders.map((founder, index) => (
-              <div key={index} className="space-y-4 group">
-                <div className="rounded-full md:rounded-xl  overflow-hidden shadow-2xl mx-auto w-72 h-72 md:w-100 md:h-80 lg:w-72 lg:h-72 ">
-                  <img 
-                    src={founder.img} 
-                    alt={founder.alt} 
-                    className="w-full h-full object-left group-hover:scale-110 transition-transform duration-500" 
-                  />
-                </div>
-                <h2 className="text-xl font-medium mb-2  leading-tight animate-fade-in-up">{founder.name}</h2>
-                <p className="text-xl  mb-4 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">{founder.desc}</p>
-              </div>
-            ))}
+
+          {/* Content */}
+          <div className="p-6">
+            <h3 className="text-lg font-semibold text-gray-900">
+              {founder.name}
+            </h3>
+
+            <p className="text-sm text-[#292B97] font-medium mt-1">
+              {founder.role}
+            </p>
+
+            <p className="text-gray-600 text-sm mt-3 leading-relaxed">
+              {founder.desc}
+            </p>
+
+
           </div>
         </div>
-      </section>
-
+      ))}
+    </div>
+  </div>
+</section>
 
 
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaEnvelope, FaPhone} from 'react-icons/fa';
-import Background from "../assets/imagesuse/background1.jpg";
+import Background from "../assets/banner.png";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 
 import SEO from '../components/seo/Seo';
@@ -785,9 +785,20 @@ const canGoRight = blogIndex + 3 < latestBlogs.length;
               Book a Call
             </button>
 
-            <button className="px-16 py-3 border border-blue-900 text-blue-900 rounded-full font-semibold hover:bg-blue-900 hover:text-white transition duration-300">
-              Discover
-            </button>
+         <button
+  onClick={() => {
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }}
+  className="px-16 py-3 border border-blue-900 text-blue-900 rounded-full font-semibold hover:bg-blue-900 hover:text-white transition duration-300"
+>
+  Discover
+</button>
           </div>
         </div>
 
@@ -819,7 +830,7 @@ const canGoRight = blogIndex + 3 < latestBlogs.length;
         </div>
       </div>
       {/*Service section */}
-      <section className="py-12 bg-white relative">
+      <section id="services" className="py-12 bg-white relative">
         <div className="max-w-7xl mx-auto px-4">
            {/* Decorative Background Circles */}
      {generateCircles(25)}

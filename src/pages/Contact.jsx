@@ -15,6 +15,7 @@ import seoBg from '../assets/imagesuse/seobackground.jpg';
 import seoImg from '../assets/imagesuse/seomarketing.jpg';
 import socialBg from '../assets/imagesuse/socialbg.jpg';
 import socialImg from '../assets/imagesuse/socialpage.jpg';
+import useSubscribe from '../components/useSubscribe.js' 
 // Icons (unchanged)
 
 
@@ -190,12 +191,13 @@ const handleFormSubmit = (e) => {
     window.scrollTo(0, 0);
   }, []);
 
-    const handleSubscribe = (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    console.log('Subscribed:', email); // Replace with API call in production
-    e.target.reset();
-  };
+ const { subscribe, loading, success } = useSubscribe();
+const handleSubscribe = async (e) => {
+  e.preventDefault();
+  const email = e.target.email.value;
+  await subscribe(email);
+  e.target.reset();
+};
 
   return (
     <div className="w-full text-gray-900 ">
@@ -229,11 +231,11 @@ const handleFormSubmit = (e) => {
 
       {/* CONTENT */}
 {/* CONTENT - MINIMAL VERSION (exactly as you asked) */}
-<section className="relative max-w-7xl mx-auto py-10">
+<section className="relative max-w-7xl mx-auto lg:py-10">
   <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0">
     
     {/* ==================== LEFT - ONLY EMAIL, PHONE, LOCATION(WITH MAP), SOCIAL ==================== */}
-    <div className="flex items-start justify-center p-8 lg:p-12 bg-[#292B97]/5 lg:bg-transparent rounded-3xl lg:rounded-none">
+    <div className="flex items-start justify-center p-8 lg:p-12 bg-[#292B97]/5 lg:bg-transparent">
       <div className="w-full space-y-6">
 
         {/* Email Div */}
@@ -397,13 +399,20 @@ Mumbai 4007000</span>
         className="flex-1 px-6 py-4 bg-white text-gray-900 rounded-full focus:outline-none focus:border-[#292B97] text-base border border-transparent"
         required
       />
-      <button
-        type="submit"
-        className="px-8 py-4 bg-gradient-to-r from-[#292B97] to-[#6466B6] text-white rounded-full hover:brightness-110 transition-all font-medium whitespace-nowrap"
-      >
-        Subscribe
-      </button>
-    </form>
+              <button
+                 type="submit"
+  disabled={loading}
+                className="px-4 py-2  text-white border border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 text-sm font-medium"
+              >
+                {loading ? "Subscribing..." : "Submit"}
+              </button>
+            </form>
+ {success && (
+  <p className="text-green-400 text-sm mt-2 animate-fadeIn">
+     Successfully Subscribed!
+  </p>
+)}
+
   </div>
 </section>
   
