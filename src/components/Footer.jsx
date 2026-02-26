@@ -1,63 +1,79 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { footerData } from '../Data/FooterData'; // Ensure the path and file name are correct
-import Logo from  '../assets/logowhite.png'
+import Logo from  '../assets/logo.png'
+import { FaEnvelope, FaMapMarkerAlt} from 'react-icons/fa';
+import useSubscribe from './useSubscribe.js' // Add icons as needed
+
 const Footer = () => {
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    console.log('Subscribed:', email); // Replace with API call in production
-    e.target.reset();
-  };
-
-  const handleUnsubscribe = (e) => {
-    e.preventDefault();
-    console.log('Unsubscribed'); // Replace with API call in production
-  };
-
+ const { subscribe, loading, success } = useSubscribe();
+const handleSubscribe = async (e) => {
+  e.preventDefault();
+  const email = e.target.email.value;
+  await subscribe(email);
+  e.target.reset();
+};
   return (
-    <footer
-      className="bg-[#2D2D2D] px-3 py-12 md:px-8 md:py-16 lg:py-24 relative overflow-hidden"
-    >
+    <footer className="bg-black px-3 py-12 md:px-8 md:py-16 lg:py-24 relative overflow-hidden">
       <div className="max-w-7xl md:mx-auto lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Company Section */}
-          <div>
-  <img
-    src={Logo}
-    alt="company logo"
-    className="h-10 w-auto object-contain"
-  />
+          {/* Left Column: Logo, Location, Email, Social */}
+          <div className="space-y-4">
+            <div className='bg-white px-3 py-3 rounded-2xl max-w-40'>
+                <img
+              src={Logo}
+              alt="company logo"
+              className="h-10 w-auto object-contain"
+            />
+            </div>
+          
+            <div className="text-white text-sm flex items-center">
+              <FaMapMarkerAlt className="mr-2" />
+              Mumbai, India
+            </div>
+            <div className="text-white text-sm flex items-center">
+              <FaEnvelope className="mr-2" />
+              hello@zentrix.media
+            </div>
+           <div className="flex space-x-3 items-center">
+  <Link to="#" className="group">
+    <img
+      src="https://imgs.search.brave.com/REO0l-1oRt6fo-JWh3MBOfQnoO-bek19ji4_U8gkeag/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMzEv/NzM3LzIwNi9zbWFs/bC90d2l0dGVyLW5l/dy1sb2dvLXR3aXR0/ZXItaWNvbnMtbmV3/LXR3aXR0ZXItbG9n/by14LTIwMjMteC1z/b2NpYWwtbWVkaWEt/aWNvbi1mcmVlLXBu/Zy5wbmc"
+      alt="Twitter"
+      className="w-10 h-10 "
+    />
+  </Link>
 
-  <div className="flex space-x-5 mt-8 md:mt-7 lg:mt-30">
-    {footerData.company.socialLinks.map((link, index) => {
-      const Icon = link.icon;
-      return (
-        <Link
-          key={index}
-          href={link.href}
-          className="text-white hover:text-[#F16D34] transform hover:scale-110 transition-all duration-300"
-          aria-label={`Visit our ${link.label}`}
-        >
-          <Icon className="w-5 h-5 lg:w-7 lg:h-7" />
-        </Link>
-      );
-    })}
-  </div>
+  <Link to="#" className="group">
+    <img
+      src="https://png.pngtree.com/png-clipart/20180626/ourmid/pngtree-instagram-icon-instagram-logo-png-image_3584852.png"
+      alt="Instagram"
+      className="w-8 h-8"
+    />
+  </Link>
+
+  <Link to="#" className="group">
+    <img
+      src="https://imgs.search.brave.com/Cf1nWrUKy9uFxSKpy2TKsY2Y-YV4EQgIuwTZHacZouI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni8xNTAxNS8xNTAx/NTk3NS5wbmc_c2Vt/dD1haXNfaHlicmlk"
+      alt="LinkedIn"
+      className="w-7 h-7 "
+    />
+  </Link>
+
 </div>
-
+          </div>
 
           {/* Services Section */}
           <div className="space-y-4">
-            <h3 className="text-white text-xl font-semibold mb-4 tracking-tight border-b border-[#F16D34]/30 pb-2">
+            <h3 className="text-white text-base font-medium">
               Services
             </h3>
-            <ul className="text-sm space-y-3">
+            <ul className="text-sm space-y-2">
               {footerData.services.map((service, index) => (
                 <li key={index}>
                   <Link
                     to={service.to}
-                    className="text-white hover:text-[#F16D34] hover:translate-x-1 transition-all duration-200"
+                    className="text-gray-300 hover:text-white transition-all duration-200"
                     aria-label={service.label}
                   >
                     {service.label}
@@ -69,15 +85,15 @@ const Footer = () => {
 
           {/* Company Links Section */}
           <div className="space-y-4">
-            <h3 className="text-white text-xl font-semibold mb-4 tracking-tight border-b border-[#F16D34]/30 pb-2">
+            <h3 className="text-white text-base font-medium">
               Company
             </h3>
-            <ul className="text-sm space-y-3">
+            <ul className="text-sm space-y-2">
               {footerData.companyLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     to={link.to}
-                    className="text-white hover:text-[#F16D34] hover:translate-x-1 transition-all duration-200"
+                    className="text-gray-300 hover:text-white transition-all duration-200"
                     aria-label={link.label}
                   >
                     {link.label}
@@ -87,72 +103,47 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info & Subscribe Section */}
+          {/* Subscribe Section */}
           <div className="space-y-4">
-            <h3 className="text-white text-xl font-semibold mb-4 tracking-tight border-b border-[#F16D34]/30 pb-2">
-              Contact & Subscribe
+            <h3 className="text-white text-base font-medium">
+              Subscribe
             </h3>
-            <ul className="text-sm space-y-4">
-              {footerData.contactInfo.map((info, index) => {
-                const Icon = info.icon;
-                return (
-                  <li key={index} className="flex items-center">
-                    <span className="text-[#F16D34] mr-3">
-                      <Icon className="w-6 h-6" />
-                    </span>
-                    <span className="text-white">{info.text}</span>
-                  </li>
-                );
-              })}
-            </ul>
-            <form onSubmit={handleSubscribe} className="flex w-full max-w-xs  mt-6">
-             <div className="flex rounded-full border border-[#F16D34]/50
-focus-within:ring-1 focus-within:ring-[#F16D34] focus-within:border-[#F16D34]">
-
-  <input
-    type="email"
-    name="email"
-    placeholder="Enter your email"
-    className="flex-1 px-4 py-2.5 bg-gray-900/50 text-gray-200 rounded-l-full
-    focus:outline-none focus:ring-0 text-sm"
-    required
-    aria-label="Email for subscription"
-  />
-
-  <button
-    type="submit"
-    className="px-4 py-2.5 bg-[#F16D34] text-white rounded-r-full
-    hover:bg-[#F16D34]/90 transition-all duration-300"
-  >
-    Subscribe
-  </button>
-</div>
-
-            </form>
-            <div className="text-sm text-gray-400 mt-4 text-center">
-              <Link
-                href="#"
-                onClick={handleUnsubscribe}
-                className="text-white hover:text-[#F16D34]transition-all duration-200"
-                aria-label="Unsubscribe from newsletter"
+            <form onSubmit={handleSubscribe}  className="flex w-full max-w-md gap-2">
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                className="flex-1 px-4 py-2 bg-white text-gray-900 rounded-full focus:outline-none text-sm border border-[#292B97]/5"
+                required
+                aria-label="Email for subscription"
+              />
+              <button
+                 type="submit"
+  disabled={loading}
+                className="px-4 py-2  text-white border border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 text-sm font-medium"
               >
-                Unsubscribe
-              </Link>
-            </div>
+                {loading ? "Subscribing..." : "Submit"}
+              </button>
+            </form>
+ {success && (
+  <p className="text-green-400 text-sm mt-2 animate-fadeIn">
+     Successfully Subscribed!
+  </p>
+)}
           </div>
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-12 pt-8 border-t border-[#F16D34]/20 text-center text-sm text-gray-400 md:flex md:justify-between md:items-center">
+        <div className="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500 md:flex md:justify-between md:items-center">
           <div className="md:text-left">
-            © 2025 {footerData.company.name}. All rights reserved.
+            © 2026 Zentrix Digital Agency. All rights reserved.
           </div>
-          <div className="mt-4 md:mt-0 md:flex space-x-3 md:space-x-6">
+          <div className="mt-4 md:mt-0 md:flex space-x-6">
             {footerData.footerLinks.map((link, index) => (
               <Link
                 key={index}
                 to={link.to}
-                className="text-white hover:text-[#F16D34]transition-all duration-200"
+                className="text-gray-500 hover:text-white transition-all duration-200"
                 aria-label={link.label}
               >
                 {link.label}

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-
+import useSubscribe from "./useSubscribe.js";
 const SubscribePopup = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setEmail("");
-    onClose();
-  };
+  const { subscribe, loading, success } = useSubscribe();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  await subscribe(email);
+  setEmail("");
+};
 
   if (!isOpen) return null;
 
@@ -42,9 +42,10 @@ const SubscribePopup = ({ isOpen, onClose }) => {
           />
           <button
             type="submit"
-            className="w-full bg-[#F16D34]  text-white py-3 rounded-full shadow-md hover:opacity-90 transition-all"
+  disabled={loading}
+            className="w-full bg-[#292B97]  text-white py-3 rounded-full shadow-md hover:opacity-90 transition-all"
           >
-            Subscribe Now
+           {loading ? "Subscribing..." : "Subscribe Now"}
           </button>
         </form>
 
@@ -53,6 +54,11 @@ const SubscribePopup = ({ isOpen, onClose }) => {
           We respect your privacy. Unsubscribe anytime.
         </p>
       </div>
+      {success && (
+  <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-lg text-sm text-center animate-fadeIn">
+  You have successfully subscribed!
+  </div>
+)}
     </div>
   );
 };

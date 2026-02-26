@@ -4,6 +4,9 @@ export const caseStudies = [
       'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop',
     title: 'Rebranding a Luxury Fashion Boutique',
     view: 1840,
+    date: "Feb 2, 2020",
+    readTime: "8 min read",
+    author: "Rachel Green",
     description:
       'Transformed an outdated brand into a modern icon, boosting engagement by 70%.',
     service: 'SEO',
@@ -61,6 +64,9 @@ export const caseStudies = [
       'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop',
     title: 'Creative Launch for Lifestyle App',
     view: 2240,
+    date: "Feb 2, 2020",
+    readTime: "8 min read",
+    author: "Rachel Green",
     description:
       'A multi-platform campaign that turned app downloads into loyal fans.',
     service: 'SEO',
@@ -111,6 +117,9 @@ export const caseStudies = [
       'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop',
     title: 'Product Launch Film for Tech Giant',
     view: 3080,
+    date: "Feb 2, 2020",
+    readTime: "8 min read",
+    author: "Rachel Green",
     description:
       'Directed and produced a high-impact launch video viewed over 1M times.',
     service: 'Performance',
@@ -155,6 +164,9 @@ export const caseStudies = [
       'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop',
     title: 'Social Media Growth for Sustainable Brand',
     view: 2540,
+    date: "Feb 2, 2020",
+    readTime: "8 min read",
+    author: "Rachel Green",
     description:
       'Grew audience engagement by 120% through relatable storytelling.',
     service: 'Social & Content',
@@ -191,6 +203,9 @@ export const caseStudies = [
       'https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=800&auto=format&fit=crop',
     title: 'Instagram Campaign for Beauty Label',
     view: 3220,
+    date: "Feb 2, 2020",
+    readTime: "8 min read",
+    author: "Rachel Green",
     description:
       'Built viral momentum that resulted in 200K new followers in two months.',
     service: 'Social & Content',
@@ -232,6 +247,9 @@ export const caseStudies = [
       'https://images.unsplash.com/photo-1581091870634-1e7c3b17d2b6?q=80&w=800&auto=format&fit=crop',
     title: 'Crisis Management for Global Retailer',
     view: 1880,
+    date: "Feb 2, 2020",
+    readTime: "8 min read",
+    author: "Rachel Green",
     description:
       'Turned a PR crisis into an opportunity for transparency and trust.',
     service: 'PR',
@@ -278,6 +296,9 @@ export const caseStudies = [
       'https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=800&auto=format&fit=crop',
     title: 'Media Launch for Sustainable Packaging Startup',
     view: 990,
+    date: "Feb 2, 2020",
+    readTime: "8 min read",
+    author: "Rachel Green",
     description:
       'Secured coverage in top-tier publications within two weeks.',
     service: 'PR',
@@ -316,6 +337,9 @@ export const caseStudies = [
       'https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=800&auto=format&fit=crop',
     title: 'Thought Leadership for Fintech Founder',
     view: 780,
+    date: "Feb 2, 2020",
+    readTime: "8 min read",
+    author: "Rachel Green",
     description:
       'Positioned the CEO as an industry voice through strategic press features.',
     service: 'PR',
@@ -356,6 +380,9 @@ export const caseStudies = [
       'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop',
     title: 'E-commerce Optimization for Fashion Brand',
     view: 2480,
+    date: "Feb 2, 2020",
+    readTime: "8 min read",
+    author: "Rachel Green",
     description:
       'Improved conversion rates by 35% through UX redesign and SEO strategy.',
     service: 'SEO',
@@ -398,6 +425,9 @@ export const caseStudies = [
       'https://images.unsplash.com/photo-1519389950476-2d9d5d000000?q=80&w=800&auto=format&fit=crop',
     title: 'Website Revamp for Art Gallery',
     view: 1440,
+    date: "Feb 2, 2020",
+    readTime: "8 min read",
+    author: "Rachel Green",
     description:
       'Created a seamless online experience that increased engagement time by 80%.',
     service: 'Social & Content',
@@ -439,6 +469,9 @@ export const caseStudies = [
       'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop',
     title: 'Retargeting Strategy for B2B Company',
     view: 1990,
+    date: "Feb 2, 2020",
+    readTime: "8 min read",
+    author: "Rachel Green",
     top:true,
     description:
       'Implemented a data-driven funnel that lifted conversion rates by 38%.',

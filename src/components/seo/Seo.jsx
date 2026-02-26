@@ -1,34 +1,54 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 
-const SeoHelmet = ({ title, description, keywords = [], href }) => {
-  const keywordsString = Array.isArray(keywords) ? keywords.join(", ") : "";
-
+const SEO = ({
+  title,
+  description,
+  keywords,
+  canonicalUrl,
+  ogImage,
+  author
+}) => {
   return (
     <Helmet>
-      {/* ✅ Always use charSet (not charset) */}
-      <meta charSet="UTF-8" />
+      {/* Character Encoding */}
+      <meta charSet="utf-8" />
 
-      {/* ✅ Title */}
+      {/* Title */}
       <title>{title}</title>
 
-      {/* ✅ Viewport and SEO basics */}
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      {/* Basic SEO */}
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywordsString} />
-      <meta name="author" content="Zentrix Team" />
+      {keywords && <meta name="keywords" content={keywords} />}
+      <meta name="author" content={author} />
 
-      {/* ✅ Open Graph (for social sharing) */}
+      {/* Canonical URL */}
+      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+      {/* Open Graph (Facebook, LinkedIn, WhatsApp) */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={href} />
-  
-      {/* ✅ Canonical & favicon */}
-      <link rel="canonical" href={href} />
+      {canonicalUrl && (
+        <meta property="og:url" content={canonicalUrl} />
+      )}
+      {ogImage && (
+        <meta property="og:image" content={ogImage} />
+      )}
+
+      {/* Twitter Card */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      {ogImage && (
+        <meta name="twitter:image" content={ogImage} />
+      )}
+
+      {/* Favicon */}
       <link rel="icon" href="/favicon.ico" />
     </Helmet>
   );
 };
 
-export default SeoHelmet;
+export default SEO;

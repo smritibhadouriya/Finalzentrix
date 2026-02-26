@@ -107,3 +107,33 @@
 .animate-scale-up {
   animation: scaleUp 0.6s ease forwards;
 }
+
+@keyframes floatRandom {
+  0% { transform: translateY(0px) rotate(var(--rotate)); }
+  100% { transform: translateY(0px) rotate(var(--rotate)); }
+}
+
+.random-float {
+  animation: floatRandom 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+
+::selection {
+  background: transparent;
+  color: inherit;
+}
+
+::-moz-selection {
+  background: transparent;
+  color: inherit;
+}

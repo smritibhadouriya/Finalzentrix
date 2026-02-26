@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useEffect, useState ,useRef
 } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
 const Main = lazy(() => import('../../components/Mainpage'))
 const Home = lazy(() => import('../../pages/Home'))
 const Contact = lazy(() => import('../../pages/Contact'))
@@ -11,15 +11,13 @@ const Loading = lazy(() => import('../../components/Loading'))
 const NotFound = lazy(() => import('../../components/NotFound'))
 const Privacy = lazy(() => import('../../components/Privacy'))
 const Terms = lazy(() => import('../../components/Terms'))
-
-
-const Social = lazy(() => import('../../pages/Services/social'))
-const Seo = lazy(() => import('../../pages/Services/Seo'))
-const Performance = lazy(() => import('../../pages/Services/performance'))
-const PR = lazy(() => import('../../pages/Services/Pr'))
 const Blog = lazy(() => import('../../pages/Blogs'))
 const Blogsingle = lazy(() => import('../../pages/Blogsingle'))
-
+const Service       = lazy(() => import('../../pages/Service'));
+const DynamicService = () => {
+  const { service } = useParams();   // :service → social, seo, performance, pr, email, ...
+  return <Service serviceSlug={service} />;
+};
 import SubscribePopup from "../../components/SubscribePopup"
 const Auth = () => {
    const [showSubscribe, setShowSubscribe] = useState(false);
@@ -49,10 +47,8 @@ useEffect(() => {
             <Route index element={<Home />} />
             <Route path="/contact" element={<Contact />} />
              <Route path="/about" element={<About />} />
-                <Route path="/service/social" element={<Social />} />
-                <Route path="/service/pr" element={<PR />} />
-               <Route path="/service/seo" element={<Seo />} />
-                <Route path="/service/performance-marketing" element={<Performance />} />
+                {/* ─── All services go through ONE route ─── */}
+              <Route path="services/:service" element={<DynamicService />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/termsnservice" element={<Terms />} />
               <Route path="/career" element={<Career />} />

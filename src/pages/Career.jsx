@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaRocket, FaUsers, FaBrain, FaChartLine } from "react-icons/fa";
 import background from '../assets/imagesuse/career.jpg';
-import Seo from "../components/seo/Seo";
 import EnquiryModal from '../components/Enquiry';
 import gpt from '../assets/imagesuse/gpt.jpg';
 import party from '../assets/imagesuse/party.jpg';
@@ -10,6 +9,7 @@ import careerup from '../assets/imagesuse/careerup.jpg';
 import hybrid from '../assets/imagesuse/hybrid.jpg';
 import {openPositions} from '../Data/Openpositions.js';
 import { useNavigate } from "react-router-dom";
+import SEO from "../components/seo/Seo";
 
 
 export default function Careers() {
@@ -93,11 +93,19 @@ const navigate = useNavigate();
   return (
     <div className="font-sans bg-white">
         <link rel="preload" href={background} as="image" />
-      <Seo title={seoData.title} description={seoData.description} keywords={seoData.keywords} href={seoData.href} />
+     
+          <SEO
+       title="Careers at Zentrix Media | Join the Intelligence Revolution"
+        description="Explore our blog for the latest digital marketing insights, case studies, and industry trends."
+         keywords="digital marketing blog, case studies, marketing insights"
+         canonicalUrl="https://zentrix.media/career"
+         ogImage={background}
+  author="Zentrix Media"
+          />
 
       {/* Hero Header */}
       <header
-        className="relative text-center py-20 md:py-32 px-4 md:px-8 bg-cover bg-no-repeat overflow-hidden"
+        className="relative text-center py-20 md:py-32 px-4 md:px-8 bg-cover bg-no-repeat overflow-hidden bg-black"
         style={{ backgroundImage: `url(${background})` ,
        loading: "lazy"}}
 
@@ -114,7 +122,7 @@ const navigate = useNavigate();
           <Link
             to="/career"
             state={{ scrollToPositions: true }}
-            className="inline-flex items-center px-8 py-4 bg-[#F16D34] text-white font-bold text-lg rounded-full hover:bg-[#F16D34]/90 transition-all duration-300 transform hover:scale-105 shadow-lg animate-pulse-slow"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#292B97] to-[#6466B6] text-white font-bold text-lg rounded-full hover:bg-[#292B97]/90 transition-all duration-300 transform hover:scale-105 shadow-lg animate-pulse-slow"
           >
             Look Available Positions <FaRocket className="ml-2" />
           </Link>
@@ -159,7 +167,7 @@ const navigate = useNavigate();
 <div className="group space-y-4 p-6 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-500 ease-out transform hover:-translate-y-2">
   
   <FaUsers
-    className="text-6xl text-[#F16D34] mx-auto
+    className="text-6xl text-white mx-auto
                transition-all duration-500 ease-out
                group-hover:scale-110
                group-hover:-translate-y-1
@@ -182,7 +190,7 @@ const navigate = useNavigate();
 <div className="group space-y-4 p-6 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-1000 ease-out transform hover:-translate-y-2">
   
   <FaBrain
-    className="text-6xl text-[#F16D34] mx-auto
+    className="text-6xl text-white mx-auto
                transition-all duration-500 ease-out
                group-hover:scale-110
                group-hover:-translate-y-1
@@ -205,7 +213,7 @@ const navigate = useNavigate();
 <div className="group space-y-4 p-6 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-500 ease-out transform hover:-translate-y-2">
   
   <FaChartLine
-    className="text-6xl text-[#F16D34] mx-auto
+    className="text-6xl text-white mx-auto
                transition-all duration-500 ease-out
                group-hover:scale-110
                group-hover:-translate-y-1
@@ -280,7 +288,7 @@ const navigate = useNavigate();
             key={index}
             className="bg-gray-800 rounded-3xl p-8 hover:bg-gray-700 transition-all duration-300 flex flex-col"
           >
-            {IconComponent && <IconComponent className="text-5xl text-[#F16D34] mx-auto mb-4" />}
+            {IconComponent && <IconComponent className="text-5xl text-white mx-auto mb-4" />}
             <h2 className="text-xl  font-medium mb-2 text-white/70 leading-tight animate-fade-in-up">
               {position.title} <span className="block text-lg text-white">({position.subtitle})</span>
             </h2>
@@ -294,7 +302,7 @@ const navigate = useNavigate();
       navigate(position.applyLink);
     }, 600); // animation duration
   }}
-  className="mt-8 inline-flex items-center justify-center px-6 py-3 bg-[#F16D34] text-white font-semibold rounded-full hover:bg-[#F16D34]/90 transition-all duration-300 transform hover:scale-105"
+  className="mt-8 inline-flex items-center justify-center px-6 py-3 bg-[#292B97] text-white font-semibold rounded-full hover:bg-[#292B97]/90 transition-all duration-300 transform hover:scale-105"
 >
   Apply Now <FaRocket className="ml-2" />
 </button>
@@ -316,7 +324,7 @@ const navigate = useNavigate();
         </p>
         <Link
           to="/contact"
-          className="inline-flex items-center px-8 py-4 bg-[#F16D34] text-white font-bold text-lg rounded-full hover:bg-[#F16D34]/90 transition-all duration-300 transform hover:scale-105 shadow-lg animate-pulse-slow"
+          className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#292B97] to-[#6466B6] text-white font-bold text-lg rounded-full hover:bg-[#292B97]/90 transition-all duration-300 transform hover:scale-105 shadow-lg animate-pulse-slow"
         >
           Connect Us <FaRocket className="ml-2" />
         </Link>
