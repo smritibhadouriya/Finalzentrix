@@ -1091,7 +1091,7 @@ We help brands stop guessing and start growing
       {canGoLeft && (
         <button
           onClick={() => setBlogIndex(prev => prev - 1)}
-          className="absolute -left-6 top-1/2 -translate-y-1/2 bg-white shadow-md p-3 rounded-full z-10 hover:bg-gray-100"
+          className="hidden lg:block absolute -left-6 top-1/2 -translate-y-1/2 bg-white shadow-md p-3 rounded-full z-10 hover:bg-gray-100"
         >
           <FiChevronLeft/>
         </button>
@@ -1129,7 +1129,7 @@ We help brands stop guessing and start growing
       {canGoRight && (
         <button
           onClick={() => setBlogIndex(prev => prev + 1)}
-          className="absolute -right-6 top-1/2 -translate-y-1/2 bg-white shadow-md p-3 rounded-full z-10 hover:bg-gray-100"
+          className=" hidden lg:block absolute -right-6 top-1/2 -translate-y-1/2 bg-white shadow-md p-3 rounded-full z-10 hover:bg-gray-100"
         >
           <FiChevronRight/>
         </button>

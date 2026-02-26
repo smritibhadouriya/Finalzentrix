@@ -202,7 +202,7 @@ const DeliverCard = ({ item}) => {
      
     >
       {/* Card exactly like the image */}
-      <div className="bg-[#F0E9FF] rounded-xl p-8 h-full flex flex-col items-center text-center group max-w-xs">
+      <div className="bg-[#F0E9FF] rounded-xl p-8 h-full flex flex-col items-center text-center group max-w-md lg:max-w-xs">
         
         {/* Icon Container - light purple square like in image */}
         <div className="w-20 h-20  bg-[#292B97]/5 rounded-2xl flex items-center justify-center mb-4 ">
@@ -276,7 +276,7 @@ const Service = () => {
       <link rel="preload" href={config.background} as="image" />
 
       {/* Hero – your original code unchanged */}
-<header className="relative py-24 px-4 md:px-8  overflow-hidden">
+<header className="relative py-10 lg:py-24 px-4 md:px-8  overflow-hidden">
   <div className="max-w-7xl mx-auto  lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
     
     {/* ==================== LEFT - TEXT ==================== */}
@@ -346,7 +346,7 @@ const Service = () => {
           </div>
 
           <div
-            className={`grid lg:px-20 grid-cols-1 md:grid-cols-3  gap-4 md:gap-10 lg:max-w-7xl md:mx-auto  `}
+            className={`grid lg:px-20 grid-cols-1 md:grid-cols-3  gap-4 md:gap-10 lg:max-w-7xl mx-auto  `}
           >
             {config.whatWeDeliver.map((item, index) => (
               <DeliverCard key={index} item={item} index={index} />
