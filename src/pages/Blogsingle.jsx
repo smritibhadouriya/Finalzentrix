@@ -118,6 +118,18 @@ const Blogsingle = () => {
   </button>
           <article className="overflow-hidden">
 
+               {/* Title */}
+              <h1 className="text-4xl font-bold mb-3 text-gray-800 leading-tight">
+                {study.title}
+              </h1>
+
+              {/* Short Description */}
+              {study.description && (
+                <p className="text-lg text-gray-700 leading-relaxed mb-10 max-w-3xl">
+                  {study.description}
+                </p>
+              )}
+
             {/* Full Width Banner */}
             <img
               src={study.banner}
@@ -125,7 +137,7 @@ const Blogsingle = () => {
               className="w-full h-100  object-cover"
             />
 
-            <div className="p-6 md:p-12 lg:p-16">
+            <div className="p-6 ">
               {/* Meta Data - ALL fields displayed */}
               <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-gray-500 mb-8">
                 <div><span className="font-medium text-gray-900">{study.date}</span></div>
@@ -137,17 +149,7 @@ const Blogsingle = () => {
                 </div>
               </div>
 
-              {/* Title */}
-              <h1 className="text-4xl md:text-5xl font-semibold mb-6 text-gray-900 leading-tight">
-                {study.title}
-              </h1>
-
-              {/* Short Description */}
-              {study.description && (
-                <p className="text-xl text-gray-600 leading-relaxed mb-12 max-w-3xl">
-                  {study.description}
-                </p>
-              )}
+           
 
               {/* Full Content */}
               <div

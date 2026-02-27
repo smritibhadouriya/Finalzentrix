@@ -132,7 +132,7 @@ export default function Careers() {
       >
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 pt-25 pb-20 text-center">
-         <h1 className="text-4xl md:text-5xl  font-semibold mb-6 text-white leading-tight animate-fade-in-up">
+         <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight animate-fade-in-up">
            Build the future with us
           </h1>
         </div>
@@ -142,10 +142,10 @@ export default function Careers() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
           <div className="space-y-8">
-            <h2 className="font-bold text-3xl tracking-normal text-gray-900">
+            <h2 className="font-bold text-3xl tracking-normal text-gray-800">
               Work Smarter, Not Harder
             </h2>
-            <p className="text-xl text-gray-800">
+            <p className="text-xl text-gray-700">
               At most agencies, you spend 50% of your time on busy work. At Zentrix Media, we don’t want you to do the boring stuff—reporting, scheduling, basic code.
            <br/>
               We encourage automation for all the run-of-the-mill tasks so you can spend 100% of your brainpower on Strategy, Creativity, and Innovation and do things that help you grow personally and professionally.
@@ -175,10 +175,10 @@ export default function Careers() {
       {/* Benefits Section - Exact match */}
       <section className="py-5 bg-white">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="font-bold text-[34px] leading-[45px] tracking-normal text-gray-900 mb-4">
+          <h2 className="font-bold text-3xl tracking-normal text-gray-800 mb-4">
             Benefits built for you.
           </h2>
-          <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-700 mb-12 max-w-2xl mx-auto">
             We support our team with perks that matter. We believe in work-life balance and investing in our people’s long-term success.
           </p>
 
@@ -189,7 +189,7 @@ export default function Careers() {
     return (
       <div
         key={index}
-        className="border border-gray-100 rounded-3xl p-8 text-left transition-all bg-[#292B97]/5 hover:shadow-lg"
+        className="border border-gray-100 rounded-3xl p-8 text-left transition-all hover:bg-[#292B97]/5 hover:shadow-lg"
       >
         {/* ICON */}
         <div className="mb-6 w-14 h-14 flex items-center justify-center rounded-2xl bg-[#292B97]/10 shadow-md">
@@ -197,12 +197,12 @@ export default function Careers() {
         </div>
 
         {/* TITLE */}
-        <h3 className="font-semibold text-2xl text-gray-900 mb-4">
+        <h3 className="font-semibold text-2xl text-gray-800 mb-2">
           {benefit.title}
         </h3>
 
         {/* DESCRIPTION */}
-        <p className="text-gray-600 leading-relaxed">
+        <p className="text-gray-700 text-lg leading-relaxed">
           {benefit.desc}
         </p>
       </div>
@@ -217,10 +217,10 @@ export default function Careers() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
             <div>
-              <h2 className="font-bold text-[34px] leading-[45px] tracking-normal text-gray-900">Open Positions</h2>
-              <p className="text-xl text-gray-600 mt-1">Join a high-performance team.</p>
+              <h2 className="font-bold text-3xl  tracking-normal text-gray-800">Open Positions</h2>
+              <p className="text-lg text-gray-700 mt-1">Join a high-performance team.</p>
             </div>
-            <div className="mt-4 md:mt-0 px-6 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold inline-flex items-center">
+            <div className="mt-4 md:mt-0 px-6 py-3 lg:py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold inline-flex items-center">
               {filteredPositions.length} roles available
             </div>
           </div>
@@ -320,7 +320,7 @@ export default function Careers() {
       {/* Final CTA (kept from original design) */}
       <section className="py-16 text-center bg-gray-900">
         <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl font-semibold mb-3 text-white leading-tight animate-fade-in-up">
+          <h1 className="text-3xl font-semibold mb-3 text-white leading-tight animate-fade-in-up">
             Never Miss an Update
           </h1>
           <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto mb-10">

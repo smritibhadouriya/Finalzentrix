@@ -120,10 +120,10 @@ const Blog = () => {
 
       {/* Hero Header */}
       <div className="relative max-w-6xl mx-auto pt-10 pb-2 text-center">
-        <h1 className="text-4xl md:text-5xl font-semibold mb-2 leading-tight animate-fade-in-up">
+        <h1 className="text-4xl font-bold mb-2 leading-tight animate-fade-in-up text-gray-800">
           Marketing Insights & Resources
         </h1>
-        <p className="text-xl mb-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
+        <p className="text-lg mb-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-300 text-gray-700">
           Stay ahead with expert tips, strategies, and trends in digital marketing
         </p>
       </div>

@@ -222,7 +222,7 @@ const handleSubscribe = async (e) => {
             Ready to Scale? <br />
             Let’s Crunch the Numbers.
           </h1>
-         <p className="text-xl  text-white/80 mb-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
+         <p className="text-lg  text-white/80 mb-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
             No fluff. No sales scripts. Just honest strategy, clear execution,
             and growth that actually compounds.
           </p>
@@ -235,7 +235,7 @@ const handleSubscribe = async (e) => {
   <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0">
     
     {/* ==================== LEFT - ONLY EMAIL, PHONE, LOCATION(WITH MAP), SOCIAL ==================== */}
-    <div className="flex items-start justify-center p-8 lg:p-12 bg-[#292B97]/5 lg:bg-transparent">
+    <div className="flex items-start justify-center p-4 lg:p-12 bg-[#292B97]/5 lg:bg-transparent">
       <div className="w-full space-y-6">
 
         {/* Email Div */}
@@ -322,7 +322,7 @@ Mumbai 4007000</span>
 
     {/* ==================== RIGHT - FORM (unchanged) ==================== */}
     <div className="flex">
-      <div className="w-full h-full bg-white px-8 lg:px-10 py-10 flex flex-col justify-center border-2 border-[#292B97]/5 rounded-3xl shadow-[#292B97]/5">
+      <div className="w-full h-full bg-white px-8 lg:px-10 py-10 flex flex-col justify-center border-2 border-[#292B97]/5 lg:rounded-3xl shadow-[#292B97]/5">
         <p className="text-2xl font-bold text-center mb-8 text-gray-800">
           Fill this form
         </p>
@@ -384,29 +384,33 @@ Mumbai 4007000</span>
         {/* Final CTA */}
 <section className="py-16 text-center bg-gray-900">
   <div className="max-w-4xl mx-auto px-6">
-    <h1 className="text-4xl font-semibold mb-3 text-white leading-tight animate-fade-in-up">
+    <h1 className="text-3xl font-semibold mb-3 text-white leading-tight animate-fade-in-up">
       Never Miss an Update
     </h1>
     <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto mb-10">
       Subscribe to our newsletter and get the latest marketing insights delivered to your inbox
     </p>
 
-    <form onSubmit={handleSubscribe} className="flex max-w-md mx-auto gap-3">
-      <input
-        type="email"
-        name="email"
-        placeholder="your@email.com"
-        className="flex-1 px-6 py-4 bg-white text-gray-900 rounded-full focus:outline-none focus:border-[#292B97] text-base border border-transparent"
-        required
-      />
-              <button
-                 type="submit"
-  disabled={loading}
-                className="px-4 py-2  text-white border border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 text-sm font-medium"
-              >
-                {loading ? "Subscribing..." : "Submit"}
-              </button>
-            </form>
+<form 
+  onSubmit={handleSubscribe} 
+  className="flex flex-col sm:flex-row max-w-md mx-auto gap-3 w-full"
+>
+  <input
+    type="email"
+    name="email"
+    placeholder="your@email.com"
+    className="w-full sm:flex-1 px-6 py-4 bg-white text-gray-900 rounded-full focus:outline-none focus:border-[#292B97] text-base border border-transparent"
+    required
+  />
+
+  <button
+    type="submit"
+    disabled={loading}
+    className="w-full sm:w-auto px-6 py-4 text-white border border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 text-base font-medium"
+  >
+    {loading ? "Subscribing..." : "Submit"}
+  </button>
+</form>
  {success && (
   <p className="text-green-400 text-sm mt-2 animate-fadeIn">
      Successfully Subscribed!

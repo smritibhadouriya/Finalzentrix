@@ -248,7 +248,7 @@ const caseStudies = [
       <article class="prose prose-lg max-w-none">
         <header class="mb-6">
           <h2 class="text-3xl font-bold">Reinventing Elegance for the Modern Era</h2>
-          <p class="text-sm text-gray-600 mt-2">A full-scale rebrand that preserved heritage while speaking to Gen Z and Millennials.</p>
+          <p class="text-sm text-gray-700 mt-2">A full-scale rebrand that preserved heritage while speaking to Gen Z and Millennials.</p>
         </header>
 
         <section class="grid gap-6 md:grid-cols-2 items-start mb-6">
@@ -305,7 +305,7 @@ const caseStudies = [
 <article class="prose prose-lg max-w-none">
   <header class="mb-6">
     <h2 class="text-3xl font-bold">From Launch to Lifestyle — Crafting Connection Beyond Installs</h2>
-    <p class="text-gray-600 mt-2 text-sm">How creativity turned an app launch into an emotional movement.</p>
+    <p class="text-gray-700 mt-2 text-sm">How creativity turned an app launch into an emotional movement.</p>
   </header>
 
   <section class="mb-6">
@@ -354,7 +354,7 @@ const caseStudies = [
 <article class="prose prose-lg max-w-none">
   <header class="mb-6">
     <h2 class="text-3xl font-bold">Cinematic Storytelling for a Global Tech Moment</h2>
-    <p class="text-gray-600 text-sm mt-2">A launch film that transformed a product reveal into an emotional spectacle.</p>
+    <p class="text-gray-700 text-sm mt-2">A launch film that transformed a product reveal into an emotional spectacle.</p>
   </header>
 
   <section class="flex flex-col md:flex-row-reverse gap-6 mb-6">
@@ -398,7 +398,7 @@ const caseStudies = [
 <article class="prose prose-lg max-w-none">
   <header class="mb-6">
     <h2 class="text-3xl font-bold">Turning Conversations into a Community</h2>
-    <p class="text-gray-600 text-sm mt-2">A social strategy rooted in humanity, not algorithms.</p>
+    <p class="text-gray-700 text-sm mt-2">A social strategy rooted in humanity, not algorithms.</p>
   </header>
 
   <section class="mb-6">
@@ -434,7 +434,7 @@ const caseStudies = [
 <article class="prose prose-lg max-w-none">
   <header class="mb-6">
     <h2 class="text-3xl font-bold">Where Real Stories Met Real Skin</h2>
-    <p class="text-gray-600 text-sm mt-2">An Instagram revival through authenticity and rhythm.</p>
+    <p class="text-gray-700 text-sm mt-2">An Instagram revival through authenticity and rhythm.</p>
   </header>
 
   <section class="grid md:grid-cols-2 gap-6 mb-6">
@@ -773,8 +773,8 @@ const canGoRight = blogIndex + 3 < latestBlogs.length;
             #Digital Growth Partner
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
-           An Agency Where Strategy Meets <br/>Measurable Digital Growth
+          <h1 className="text-4xl font-bold text-gray-800 mb-6 leading-tight">
+           An Agency Where Strategy Meets Measurable Digital Growth
           </h1>
 
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
@@ -836,7 +836,7 @@ Explore Services
       {/*360 degree line */}
       <div className="py-10 bg-blue-900/3">
         <div className="max-w-7xl mx-auto text-center ">
-          <h1 className="font-bold text-[30px] text-center text-gray-800 animate-fade-in-up">
+          <h1 className="font-bold text-3xl text-center text-gray-800 animate-fade-in-up">
             360° Digital Domination
           </h1>
           <p className="text-lg text-gray-700 leading-relaxed animate-fade-in-up">
@@ -854,7 +854,7 @@ Explore Services
 
       
            <p className="text-lg text-[#292B97]  font-semibold leading-relaxed animate-fade-in-up text-center">What We Do</p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-center  text-gray-800 mb-2">Full Service Digital Solutions</h2>
+          <h2 className="text-3xl font-bold text-center  text-gray-800 mb-2">Full Service Digital Solutions</h2>
           <p className="text-lg text-gray-700 leading-relaxed animate-fade-in-up text-center mb-10">Everything you need to grow your business online, all in one place.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => {
@@ -871,10 +871,10 @@ Explore Services
                     <div className="bg-blue-900 rounded-full p-3 flex-shrink-0 ">
                       <IconComponent className="text-white h-6 w-6" />
                     </div>
-                    <span className="text-gray-600 text-xl"><FiChevronRight /> </span>
+                    <span className="text-gray-700 text-xl"><FiChevronRight /> </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{displayName}</h3>
-                  <p className="text-gray-600">{service.subheadline}</p>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">{displayName}</h3>
+                  <p className="text-gray-700">{service.subheadline}</p>
                 </NavLink>
               );
             })}
@@ -888,7 +888,7 @@ Explore Services
       <section className="py-12 bg-white relative">
         <div className="">
            <p className="text-lg text-[#292B97]  font-semibold leading-relaxed animate-fade-in-up text-center">About Us</p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-center  text-gray-800 mb-2">We constantly think in code, data, and trends</h2>
+          <h2 className="text-3xl  font-bold text-center  text-gray-800 mb-2">We constantly think in code, data, and trends</h2>
           <p className="text-lg text-gray-700 leading-relaxed animate-fade-in-up text-center mb-10">Everything you need to grow your business online, all in one place.</p>
   
          
@@ -967,12 +967,12 @@ Explore Services
 
         {/* Right Content */}
         <div className='lg:mt-10'>
-               <h2 className="text-3xl font-bold text-gray-800 mb-4">
+               <h2 className="text-2xl font-bold text-gray-800 mb-4">
            We Are More Than
 Just an Agency
           </h2>
 
-          <p className="text-gray-600  leading-relaxed">
+          <p className="text-gray-700  leading-relaxed">
            We are an AI-forward, 360° digital agency
 turning raw data into vibrant experiences. 
 We help brands stop guessing and start growing
@@ -1065,7 +1065,7 @@ We help brands stop guessing and start growing
               </div>
 
               {/* Review Text */}
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 {item.text}
               </p>
 
@@ -1137,10 +1137,10 @@ We help brands stop guessing and start growing
               className="w-full h-48 object-cover bg-black"
             />
             <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
                 {blog.title}
               </h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-700 mb-4">
                 {blog.description}
               </p>
               <span className="text-blue-500 hover:text-blue-700 flex items-center">

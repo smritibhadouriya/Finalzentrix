@@ -125,18 +125,18 @@ export default function AboutUs() {
 
       {/* Hero Header */}
       <header
-        className="relative text-center py-20 md:py-32 px-4 md:px-8 bg-cover bg-no-repeat bg-center overflow-hidden bg-black"
+        className="relative text-center py-20 md:py-20 px-4 md:px-8 bg-cover bg-no-repeat bg-center overflow-hidden bg-black"
         style={{ backgroundImage: `url(${background})` ,
        loading: "lazy"}}
       >
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative max-w-7xl mx-auto">
-           <h1 className="text-4xl lg:text-6xl  font-semibold mb-6 text-white  animate-fade-in-up text-left">
+           <h1 className="text-4xl lg:text-5xl  font-bold mb-6 text-white  animate-fade-in-up text-left">
             Transforming Brands<br/>
 Through Digital<br/>
 Excellence
           </h1>
-           <p className="text-xl lg:text-2xl text-white/80 mb-8 animate-fade-in-up animation-delay-300 text-left">
+           <p className="text-xl  text-white/80 mb-8 animate-fade-in-up animation-delay-300 text-left">
             Were a team of passionate digital marketers, strategists, and creatives<br/>  
 dedicated to helping businesses thrive in the digital a
           </p>
@@ -155,16 +155,14 @@ dedicated to helping businesses thrive in the digital a
               />
             </div>
             <div className="space-y-8 order-2 lg:order-1">
-              <h1 className="font-inter font-bold text-xl lg:text-3xl tracking-normal  mb-3 text-gray-900 animate-fade-in-up">
+              <h1 className="font-inter font-bold text-3xl tracking-normal  mb-3 text-gray-800 animate-fade-in-up">
                 What we do?
               </h1>
                <p className="text-xl  text-gray-600 mb-4 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
                The modern digital landscape is quite dynamic and the brand’s needs are constantly evolving. One day it's SEO, the next it's AI Search and you need a guide who can pivot instantly.
-              </p>
-            <p className="text-xl  text-gray-600 mb-4 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
+             <br/>
                 At Zentrix Media, we are versatile by design and more than happy to partner with you and help you accomplish your goals. We don't just "do digital marketing" but we act as your external growth engine. Whether you are a startup looking for your first 10,000 users or a legacy brand needing a digital facelift, we have the tools, the data, and the energy and the right mettle to make it happen.
-              </p>
-              <p className="text-xl  text-gray-600 mb-4 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
+             <br/>
                 We are a team of digital natives, data geeks, and creative rebels on a mission to rewrite the rules of modern marketing.
               </p>
              
@@ -174,27 +172,27 @@ dedicated to helping businesses thrive in the digital a
       </section>
 
 {/* value Code */}
-      <section className="relative overflow-hidden py-5" >
+      <section className="relative overflow-hidden pt-7 pb-20" >
         <div className="absolute inset-0"></div>
         <div className="relative max-w-6xl mx-auto px-4 md:px-8 text-center">
-         <h1 className="font-inter font-bold text-xl lg:text-4xl tracking-normal  mb-4 animate-fade-in-up">
+         <h1 className="font-inter  text-3xl tracking-normal text-gray-800 font-bold mb-3 animate-fade-in-up">
        Our Values
           </h1>
-            <p className="font-inter  text-xl  tracking-normal  mb-10  animate-fade-in-up text-gray-600">
+            <p className="font-inter  max-w-lg mx-auto text-xl  tracking-normal  mb-10  animate-fade-in-up text-gray-600">
      These core principles guide everything we do and shape the way we work with our clients.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
-                <div key={index} className="group space-y-4 p-1 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-500 ease-out transform hover:-translate-y-2">
-                 <div className="w-20 h-20 mx-auto flex items-center justify-center 
+                <div key={index} className="group space-y-4 p-2 rounded-2xl bg-white/5 hover:bg-[#292B97]/5 transition-all duration-500 ease-out transform hover:-translate-y-2">
+                 <div className="w-15 h-15 mx-auto flex items-center justify-center 
                 rounded-full bg-[#292B97]/5 
                 group-hover:bg-[#292B97]/10
                 transition-all duration-500">
 
   <Icon
-    className="text-4xl text-[#292B97] 
+    className="text-3xl text-[#292B97] 
                transition-all duration-500 
                group-hover:scale-110"
   />
@@ -204,7 +202,7 @@ dedicated to helping businesses thrive in the digital a
                     group-hover:translate-y-[-2px]">
                     {value.title}
                   </h2>
-                  <p className="text-xl 
+                  <p className="text-lg text-gray-700
                     transition-all duration-500
                     ">
                     {value.desc}
@@ -222,11 +220,11 @@ dedicated to helping businesses thrive in the digital a
   <div className="max-w-7xl mx-auto px-6">
 
     {/* Heading */}
-    <div className="text-center mb-16">
-      <h2 className="text-3xl md:text-4xl font-bold">
+    <div className="text-center mb-15">
+      <h2 className="text-3xl font-bold text-gray-800">
         Meet the Founders
       </h2>
-      <p className="text-gray-600 mt-3">
+      <p className="text-lg text-gray-700 ">
         Young Blood. Old Souls. Sharp Minds.
       </p>
     </div>
@@ -236,7 +234,7 @@ dedicated to helping businesses thrive in the digital a
       {founders.map((founder, index) => (
         <div
           key={index}
-          className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+          className="bg-white rounded-2xl shadow-md hover:shadow-xl  transition-all duration-300 overflow-hidden group"
         >
           {/* Image */}
           <div className="h-64 overflow-hidden">
@@ -274,7 +272,7 @@ dedicated to helping businesses thrive in the digital a
 
       {/* Final CTA */}
       <section className="py-10 text-center bg-gray-900">
-          <h1 className="text-4xl   font-semibold mb-6 text-white leading-tight animate-fade-in-up">
+          <h1 className="text-3xl   font-semibold mb-4 text-white leading-tight animate-fade-in-up">
          Ready to Grow Your Brand?
         </h1>
         <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto font-semibold mb-10">

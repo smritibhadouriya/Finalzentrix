@@ -184,7 +184,7 @@ const Contactcomp = () => {
          {/* Left - Text Content */}
          <div className="flex items-start justify-center p-10">
            <div className="max-w-md">
-             <h2 className="text-4xl font-bold text-gray-900 mb-4">Ready to Grow Your Business?</h2>
+             <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Grow <br/>  Your Business?</h2>
              <p className="text-gray-600 mb-6">
                Let&apos;s discuss your goals and how we can help you achieve them. Fill out the form or reach out directly.
              </p>

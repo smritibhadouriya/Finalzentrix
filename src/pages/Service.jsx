@@ -212,7 +212,7 @@ const DeliverCard = ({ item}) => {
         </div>
 
         {/* Title - bold & big like image */}
-        <h2 className="text-xl font-semibold text-gray-900 mb-4 leading-tight">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4 leading-tight">
           {item.title}
         </h2>
 
@@ -276,16 +276,16 @@ const Service = () => {
       <link rel="preload" href={config.background} as="image" />
 
       {/* Hero – your original code unchanged */}
-<header className="relative py-10 lg:py-24 px-4 md:px-8  overflow-hidden">
+<header className="relative py-10 lg:py-15 px-4 md:px-8  overflow-hidden">
   <div className="max-w-7xl mx-auto  lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
     
     {/* ==================== LEFT - TEXT ==================== */}
-    <div className="space-y-8 lg:pr-8">
-      <h1 className="text-4xl md:text-5xl font-semibold text-black leading-tight animate-fade-in-up">
+    <div className="space-y-6 lg:pr-8">
+      <h1 className="text-4xl  font-bold text-gray-800 leading-tight animate-fade-in-up">
         {config.headline}
       </h1>
       
-      <p className="text-xl text-gray-900 animate-fade-in-up animation-delay-300">
+      <p className="text-lg text-gray-700 animate-fade-in-up animation-delay-300">
         {config.subheadline}
       </p>
 
@@ -310,7 +310,7 @@ const Service = () => {
       <img
         src={config.background}
         alt={config.headline}
-        className="w-auto h-100 object-cover"
+        className="w-auto h-90 object-cover"
       />
       
       {/* Optional subtle shine/overlay for premium look (you can remove if not needed) */}
@@ -334,21 +334,21 @@ const Service = () => {
               />
             </div>
             <div className="space-y-8 md:order-1">
-              <h1 className="font-inter font-bold text-[30px] md:text-[34.3px] leading-[45px] tracking-normal mb-3 text-gray-900">
+              <h1 className="font-inter font-bold text-3xl tracking-normal mb-4 text-gray-800">
                 {config.introTitle}
               </h1>
-              <p className="text-xl text-gray-800">{config.introText}</p>
+              <p className="text-lg text-gray-700">{config.introText}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* What We Deliver – your original unchanged */}
-    <section className="relative overflow-hidden py-14 md:py-20 ">
+    <section className="relative overflow-hidden py-14  ">
         <div className="absolute inset-0"></div>
-        <div className="relative px-4 md:px-8 space-y-8 md:space-y-12">
+        <div className="relative px-4 md:px-8 space-y-2 md:space-y-12">
           <div className="text-center space-y-4">
-            <h1 className="font-inter font-bold text-[30px] md:text-[34.3px] leading-[45px] tracking-normal text-center mb-3 text-black">
+            <h1 className="font-inter font-bold text-3xl tracking-normal text-center mb-3 text-gray-800">
               What We Deliver?
             </h1>
           </div>
@@ -364,7 +364,7 @@ const Service = () => {
       </section>
 
      {/*contact component */}
-     <section id="contact" className="scroll-mt-20 relative max-w-7xl mx-auto py-10"> {/* Added subtle bg to reduce 'white white' starkness */}
+     <section id="contact" className="scroll-mt-24 relative max-w-7xl mx-auto"> {/* Added subtle bg to reduce 'white white' starkness */}
        <p className="text-xl text-[#292B97] font-bold leading-relaxed animate-fade-in-up text-center mb-7">Get In Touch</p>
 <Contactcomp />
      </section>
