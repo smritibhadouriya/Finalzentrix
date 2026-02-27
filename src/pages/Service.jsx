@@ -202,7 +202,7 @@ const DeliverCard = ({ item}) => {
      
     >
       {/* Card exactly like the image */}
-      <div className="bg-[#F0E9FF] rounded-xl p-8 h-full flex flex-col items-center text-center group max-w-md lg:max-w-xs">
+      <div className="hover:bg-[#F0E9FF] rounded-xl p-8 h-full flex flex-col items-center text-center group max-w-md lg:max-w-xs">
         
         {/* Icon Container - light purple square like in image */}
         <div className="w-20 h-20  bg-[#292B97]/5 rounded-2xl flex items-center justify-center mb-4 ">
