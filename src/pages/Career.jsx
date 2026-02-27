@@ -327,7 +327,7 @@ export default function Careers() {
             Subscribe to our newsletter and get the latest marketing insights delivered to your inbox
           </p>
 
-          <form onSubmit={handleSubscribe} className="flex max-w-md mx-auto gap-3">
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row  max-w-md mx-auto gap-3">
             <input
               type="email"
               name="email"
