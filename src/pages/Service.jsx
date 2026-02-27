@@ -368,7 +368,7 @@ const Service = () => {
       </section>
 
      {/*contact component */}
-     <section id="contact" className="scroll-mt-24 relative max-w-7xl mx-auto"> {/* Added subtle bg to reduce 'white white' starkness */}
+     <section id="contact" className="scroll-mt-24 relative max-w-7xl mx-auto pb-10"> {/* Added subtle bg to reduce 'white white' starkness */}
        <p className="text-xl text-[#292B97] font-bold leading-relaxed animate-fade-in-up text-center mb-7">Get In Touch</p>
 <Contactcomp />
      </section>

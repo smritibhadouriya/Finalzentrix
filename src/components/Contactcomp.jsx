@@ -206,11 +206,11 @@ const Contactcomp = () => {
          </div>
          {/* Right - Form */}
          <div className="flex">
-           <div className="w-full h-full bg-white px-10 py-2  flex flex-col justify-center border-2 border-[#292B97]/5 rounded-3xl shadow-[#292B97]/5 "> {/* Removed min-h-[520px]; height now responsive to content */}
+           <div className="w-full h-full bg-white px-10 pt-2 pb-5  flex flex-col justify-center border-2 border-[#292B97]/5 rounded-3xl shadow-[#292B97]/5 "> {/* Removed min-h-[520px]; height now responsive to content */}
              <p className="text-xl font-bold text-center my-4 text-gray-700 leading-tight animate-fade-in-up">
                Fill this form
              </p>
-             <form onSubmit={handleFormSubmit} className="space-y-3">
+             <form onSubmit={handleFormSubmit} className="space-y-4">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                  <input
                    type="text"
