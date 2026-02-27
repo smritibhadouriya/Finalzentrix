@@ -796,7 +796,7 @@ business results
       });
     }
   }}
-            className="px-16 py-3 bg-blue-900 text-white rounded-full font-semibold hover:bg-blue-800 transition duration-300">
+            className="inline-flex items-center px-8 py-4 bg-[#292B97] text-white font-bold text-lg rounded-full hover:bg-[#292B97]/90 transition-all duration-300 transform hover:scale-105 shadow-lg animate-pulse-slow">
             Let’s Grow Your Brand 
             </button>
 

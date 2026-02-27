@@ -192,9 +192,16 @@ const Navbar = () => {
               {contactItem && (
                 <NavLink
                   to={contactItem.path}
-                  className={`bg-gradient-to-r from-[#292B97] to-[#6466B6] text-white px-6 py-2 rounded-full text-lg font-medium hover:bg-[#292B97]/90 transition-all duration-300 ${
-                    location.pathname === contactItem.path ? 'ring-2 ring-white/50' : ''
-                  }`}
+                className={`group relative overflow-hidden 
+bg-gradient-to-r from-[#292B97] to-[#6466B6] 
+text-white px-7 py-2.5 rounded-full text-lg font-semibold 
+transition-all duration-500 ease-out 
+hover:scale-105   animate-pulse-slow
+hover:shadow-xl hover:shadow-[#292B97]/30
+active:scale-90
+${
+  location.pathname === contactItem.path ? 'ring-2 ring-white/50' : ''
+}`}
                 >
                   Get Started
                 </NavLink>

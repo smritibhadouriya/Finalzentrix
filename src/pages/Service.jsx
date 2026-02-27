@@ -204,12 +204,16 @@ const DeliverCard = ({ item}) => {
       {/* Card exactly like the image */}
       <div className="hover:bg-[#F0E9FF] rounded-xl p-8 h-full flex flex-col items-center text-center group max-w-md lg:max-w-xs">
         
-        {/* Icon Container - light purple square like in image */}
-        <div className="w-20 h-20  bg-[#292B97]/5 rounded-2xl flex items-center justify-center mb-4 ">
-          {Icon && (
-            <Icon className="text-5xl text-[#292B97]" />
-          )}
-        </div>
+    {/* Icon Wrapper */}
+      <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-[#292B97]/5 
+                      group-hover:bg-[#292B97]/10 transition-all duration-500">
+        
+        <Icon
+          className="text-3xl text-[#292B97] 
+                     transition-all duration-500 
+                     group-hover:scale-110"
+        />
+      </div>
 
         {/* Title - bold & big like image */}
         <h2 className="text-xl font-semibold text-gray-800 mb-4 leading-tight">
@@ -325,7 +329,7 @@ const Service = () => {
       {/* Intro Section – unchanged */}
       <section className="py-20 bg-blue-900/10">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             <div className="rounded-3xl overflow-hidden shadow-2xl h-[300px] lg:h-[350px] md:order-2">
               <img
                 src={config.mainImage}
@@ -334,7 +338,7 @@ const Service = () => {
               />
             </div>
             <div className="space-y-8 md:order-1">
-              <h1 className="font-inter font-bold text-3xl tracking-normal mb-4 text-gray-800">
+              <h1 className="font-inter font-bold text-3xl  tracking-normal mb-4 text-gray-800">
                 {config.introTitle}
               </h1>
               <p className="text-lg text-gray-700">{config.introText}</p>
