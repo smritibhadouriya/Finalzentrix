@@ -188,10 +188,17 @@ dedicated to helping businesses thrive in the digital a
               const Icon = value.icon;
               return (
                 <div key={index} className="group space-y-4 p-1 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-500 ease-out transform hover:-translate-y-2">
-                  <Icon
-                    className="text-6xl text-[#292B97] mx-auto
-                      transition-all duration-500 ease-out"
-                  />
+                 <div className="w-20 h-20 mx-auto flex items-center justify-center 
+                rounded-full bg-[#292B97]/5 
+                group-hover:bg-[#292B97]/10
+                transition-all duration-500">
+
+  <Icon
+    className="text-4xl text-[#292B97] 
+               transition-all duration-500 
+               group-hover:scale-110"
+  />
+</div>
                   <h2 className="text-xl font-medium
                     transition-all duration-500
                     group-hover:translate-y-[-2px]">
@@ -211,7 +218,7 @@ dedicated to helping businesses thrive in the digital a
 
 
             {/* Meet the Founders */}
-<section className="py-10 bg-gray-50">
+<section className="py-15 bg-gray-50">
   <div className="max-w-7xl mx-auto px-6">
 
     {/* Heading */}
@@ -281,12 +288,7 @@ your business.
         >
           Get Strated
         </button>
-           <button
-          onClick={openEnquiry}
-          className="inline-flex items-center px-8 py-4 text-white font-bold text-lg rounded-full border border-white "
-        >
-          View Our Work 
-        </button>
+          
       </div>
       </section>
 
@@ -295,146 +297,6 @@ your business.
   );
 }
 
-      {/* Founder’s Story – Mobile: Image first, then text 
-      <section className="py-20 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="rounded-3xl overflow-hidden shadow-2xl ">
-              <img
-                src="https://www.shutterstock.com/image-photo/professionals-diverse-group-collaborate-boardroom-600nw-2431976515.jpg"
-                alt="Zentrix founders and team"
-                className="w-full h-auto md:h-[400px] object-cover hover:scale-105 transition-transform duration-1000"
-              />
-            </div>
-            <div className="space-y-5 ">
-             <h1 className="font-inter font-bold text-[30px] md:text-[34.3px] leading-[45px]  tracking-normal  mb-3 text-gray-900 animate-fade-in-up">
-                The Founder’s Story
-              </h1>
-              <p className="text-xl  text-gray-800 mb-4 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
-                We didn't start Zentrix Media to be another agency with a foosball table and vague promises. We started it because we saw a gap. The digital landscape was changing faster than traditional agencies could keep up.
-              </p>
-               <p className="text-xl  text-gray-800 mb-4 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
-                AI was rising. Attention spans were shrinking. Data was everywhere, but nobody knew how to read it. So, we built Zentrix Media — a collective of young, dynamic professionals who grew up on the internet.
-              </p>
-              <p className="text-xl  text-gray-800 mb-4 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
-                We understand the memes, the algorithms, and the culture because we live in it. But we back that intuition with hardcore data science and deliver results every single time.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      */}
 
 
 
-      {/* Updated "What Makes Us Different?" Section
-      <section className="py-15 bg-blue-900/10">
-        <div className="max-w-7xl mx-auto px-6">
-            <h1 className="font-inter font-bold text-[30px] md:text-[34.3px] leading-[45px] text-center tracking-normal  mb-6 text-gray-900 animate-fade-in-up">
-            What Makes Us Different?
-          </h1>
-
-          {/* Large screens (md+): Horizontal 3-column grid
-          <div className="hidden md:grid md:grid-cols-3 gap-8">
-            {differentiators.map((item, index) => (
-              <div
-                key={index}
-                className={`group relative overflow-hidden rounded-3xl  shadow-xl transition-all duration-500 bg-white hover:scale-105 hover:shadow-2xl ${
-            index === activeIndex
-              ? "ring-2 ring-[#292B97]ring-offset-2 "
-              : " hover:shadow-2xl"
-          }`}
-              >
-                {/* Full height image on top 
-                <div className="overflow-hidden h-50">
-                  <img
-                    src={item.img}
-                    alt={item.alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-
-                {/* Content below image 
-                 <div className="px-4 py-2 text-left space-y-2">
-            <h3
-              className={`  transition-colors duration-300 text-xl  font-medium mb-2  leading-tight animate-fade-in-up ${
-                index === activeIndex ? "text-[#F16D34]" : "text-gray-800 group-hover:text-[#F16D34]"
-              }`}
-            >
-              {item.title}
-            </h3>
-           <p className="text-xl  text-gray-800 mb-4 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
-              {item.desc}
-            </p>
-          </div>
-
-                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            ))}
-          </div>
-
-             {/* Indicator dots for large screens (same as original)
-    <div className="hidden md:flex justify-center mt-10 gap-4">
-      {differentiators.map((_, index) => (
-        <div
-          key={index}
-          className={`h-2 rounded-full transition-all duration-500 ${
-            index === activeIndex ? "w-12 bg-[#F16D34]" : "w-2 bg-gray-300"
-          }`}
-        />
-      ))}
-    </div>
-
-          {/* Small screens (<md): Full-width horizontal carousel (one card at a time)
-          <div className="md:hidden relative">
-            <div className="overflow-hidden">
-              <div
-                className="flex transition-transform duration-700 ease-in-out"
-                style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-              >
-                {differentiators.map((item, index) => (
-                  <div key={index} className="w-full flex-shrink-0 px-4">
-                    <div className="group relative overflow-hidden rounded-3xl shadow-xl bg-white">
-                      {/* Full height image on top
-                      <div className="overflow-hidden h-50">
-                        <img
-                          src={item.img}
-                          alt={item.alt}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-
-                      {/* Content below image
-                      <div className="p-4 text-left space-y-2">
-                        <h3 className="text-xl  font-medium mb-2 text-gray-800 leading-tight animate-fade-in-up">
-                          {item.title}
-                        </h3>
-                       <p className="text-xl  text-gray-800 mb-4 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Carousel indicators
-            <div className="flex justify-center mt-8 gap-4">
-              {differentiators.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveIndex(index)}
-                  className={`h-2 rounded-full transition-all duration-500 ${
-                    index === activeIndex ? "w-12 bg-[#F16D34]" : "w-2 bg-gray-300"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-
-           
-          </div>
-        </div>
-      </section>*/}

@@ -1,25 +1,36 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaRocket, FaUsers, FaBrain, FaChartLine } from "react-icons/fa";
-import background from '../assets/imagesuse/career.jpg';
+import { FaRocket, FaUsers, FaBrain, FaChartLine, FaEnvelope, FaFirstAid } from "react-icons/fa";
 import EnquiryModal from '../components/Enquiry';
-import gpt from '../assets/imagesuse/gpt.jpg';
-import party from '../assets/imagesuse/party.jpg';
-import careerup from '../assets/imagesuse/careerup.jpg';
-import hybrid from '../assets/imagesuse/hybrid.jpg';
-import {openPositions} from '../Data/Openpositions.js';
+import { openPositions } from '../Data/Openpositions.js';
 import { useNavigate } from "react-router-dom";
 import SEO from "../components/seo/Seo";
 import Background from "../assets/imagesuse/background1.jpg";
-
+import useSubscribe from '../components/useSubscribe.js';
+import { FaLaptop, FaUpDown } from "react-icons/fa6";
 
 export default function Careers() {
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const openPositionsRef = useRef(null);
   const location = useLocation();
 
+  const { subscribe, loading, success } = useSubscribe();
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    await subscribe(email);
+    e.target.reset();
+  };
+
   const openEnquiry = () => setIsEnquiryOpen(true);
   const closeEnquiry = () => setIsEnquiryOpen(false);
+
+  // NEW STATES FOR FILTERS + PAGINATION
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedDepartment, setSelectedDepartment] = useState("All Departments");
+  const [visibleCount, setVisibleCount] = useState(3);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,317 +39,324 @@ export default function Careers() {
   useEffect(() => {
     if (location.state?.scrollToPositions && openPositionsRef.current) {
       openPositionsRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
+        behavior: "smooth",
+        block: "center",
       });
       window.history.replaceState({}, document.title);
     }
   }, [location.state]);
 
+  // Reset pagination when filters change
   useEffect(() => {
-  if (location.state?.scrollToPositions && openPositionsRef.current) {
-    openPositionsRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    });
-    window.history.replaceState({}, document.title);
-  }
-}, [location.state]);
-
+    setVisibleCount(3);
+  }, [searchTerm, selectedDepartment]);
 
   const benefits = [
     {
+      icon:FaLaptop,
       title: "The Best Toys",
-      desc: "Access to premium AI tools (Google Gemini, GPT-7, Custom Enterprise Tools) to supercharge your workflow.",
-      img: gpt,
-      alt: "AI-Powered Marketing Dashboard Interface",
+      desc: "Access to premium AI tools (Google Gemini, GPT-4, Custom Enterprise Tools) to supercharge your workflow.",
     },
     {
-      title: "High-Octane Fuel",
-      desc: "Coffee, snacks, and the occasional pizza brainstorm.",
-      img: party,
-      alt: "Diverse team enjoying pizza during office break",
+       icon:FaFirstAid,
+      title: "Premium Health",
+      desc: "Top-tier medical, dental, and vision coverage for you and your family.",
     },
     {
-      title: "Hybrid Flex",
-      desc: "We value output, not chair time.",
-      img: hybrid,
-      alt: "Person working remotely with laptop in a cafe",
-    },
-    {
+       icon:FaUpDown,
       title: "Career Velocity",
       desc: "We are growing fast. Perform well, and you’ll rise faster here than anywhere else.",
-      img: careerup,
-      alt: "Rocket launching symbolizing fast career growth",
     },
   ];
 
-  const seoData = {
-    title: "Careers at Zentrix Media | Join the Intelligence Revolution",
-    description: "Join Zentrix Media. Work with AI, data, and creativity. Zero ego. High velocity. Real impact.",
-    keywords: ["careers at zentrix media", "digital marketing jobs", "performance marketing careers", "creative agency jobs"],
-    href: "https://zentrix.media/career",
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Updated department colors to match real data
+  const getDepartmentStyle = (dept) => {
+    const department = (dept || "").toUpperCase();
+    if (department.includes("SOFTWARE")) return "bg-blue-100 text-blue-700";
+    if (department.includes("DESIGN")) return "bg-violet-100 text-violet-700";
+    if (department.includes("DATA")) return "bg-amber-100 text-amber-700";
+    if (department.includes("MARKETING")) return "bg-emerald-100 text-emerald-700";
+    return "bg-gray-100 text-gray-700";
   };
 
-  const cultureItems = [
-    { icon: FaUsers, title: "Zero Ego", desc: "The intern’s good idea beats the founder’s bad idea. Every time." },
-    { icon: FaBrain, title: "Always Beta", desc: "We are constantly learning. If you aren't upgrading your skills weekly, you're falling behind." },
-    { icon: FaChartLine, title: "Data-Backed Creativity", desc: "We don't guess. We test." },
+  // Dynamic departments from data
+  const allDepartments = [
+    "All Departments",
+    ...new Set(openPositions.map((pos) => pos.department).filter(Boolean)),
   ];
 
+  // Scroll helper (used by new Browse Jobs button)
+  const scrollToPositions = () => {
+    openPositionsRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
-  const [isTransitioning, setIsTransitioning] = useState(false);
-const [targetLink, setTargetLink] = useState(null);
-const navigate = useNavigate();
+  // Filtered & paginated positions
+  const filteredPositions = openPositions.filter((position) => {
+    const searchLower = searchTerm.toLowerCase().trim();
+    const matchesSearch =
+      !searchTerm ||
+      position.title.toLowerCase().includes(searchLower) ||
+      (position.subtitle && position.subtitle.toLowerCase().includes(searchLower)) ||
+      (position.department && position.department.toLowerCase().includes(searchLower));
+
+    const matchesDept =
+      selectedDepartment === "All Departments" || position.department === selectedDepartment;
+
+    return matchesSearch && matchesDept;
+  });
+
+  const displayedPositions = filteredPositions.slice(0, visibleCount);
+  const showLoadMore = visibleCount < filteredPositions.length;
 
   return (
     <div className="font-sans bg-white">
-        <link rel="preload" href={background} as="image" />
-     
-          <SEO
-       title="Careers at Zentrix Media | Join the Intelligence Revolution"
-        description="Explore our blog for the latest digital marketing insights, case studies, and industry trends."
-         keywords="digital marketing blog, case studies, marketing insights"
-         canonicalUrl="https://zentrix.media/career"
-         ogImage={background}
-  author="Zentrix Media"
-          />
+      <SEO
+        title="Careers at Zentrix Media | Join the Intelligence Revolution"
+        description="Join Zentrix Media. Work with AI, data, and creativity. Zero ego. High velocity. Real impact."
+        keywords="careers at zentrix media, digital marketing jobs, performance marketing careers, creative agency jobs"
+        canonicalUrl="https://zentrix.media/career"
+        ogImage={Background}
+        author="Zentrix Media"
+      />
 
-      {/* Hero Header */}
-      <header
-        className="relative text-center py-20 md:py-32 px-4 md:px-8 bg-cover bg-no-repeat overflow-hidden bg-black"
-        style={{ backgroundImage: `url(${background})` ,
-       loading: "lazy"}}
-
+      {/* Hero Header - Exact match to design */}
+   
+            <section 
+        className="relative w-full bg-cover bg-no-repeat bg-center text-white overflow-hidden bg-gradient-to-r from-[#292B97] via-[#6466B6] to-[#9394f8]"
+      
       >
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative max-w-6xl mx-auto">
-          <h1 className="text-4xl md:text-5xl  font-semibold mb-6 text-white leading-tight animate-fade-in-up">
-            Join the Intelligence Revolution.<br />
-            Warning: We Move Fast, Like, AI-Fast
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-25 pb-20 text-center">
+         <h1 className="text-4xl md:text-5xl  font-semibold mb-6 text-white leading-tight animate-fade-in-up">
+           Build the future with us
           </h1>
-          <p className="text-xl  text-white/80 mb-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
-            We are always looking for the misfits, the data-wizards, and the creative rebels who are tired of corporate safe. If you are one, Welcome to a space that feels like home.
-          </p>
-          <Link
-            to="/career"
-            state={{ scrollToPositions: true }}
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#292B97] to-[#6466B6] text-white font-bold text-lg rounded-full hover:bg-[#292B97]/90 transition-all duration-300 transform hover:scale-105 shadow-lg animate-pulse-slow"
-          >
-            Look Available Positions <FaRocket className="ml-2" />
-          </Link>
         </div>
-      </header>
+      </section>
 
-      {/* Work Smarter Section */}
-      <section className="py-20 bg-blue-900/10">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div className="rounded-3xl overflow-hidden shadow-2xl  order-1">
-            <img
-               src={Background}
-              alt="Zentrix Media team collaborating on intelligent marketing strategies with AI"
-              className="w-full h-[300px] md:h-[400px] object-cover hover:scale-105 transition-transform duration-1000"
-            />
-          </div>
-          <div className="space-y-8 order-2">
-             <h1 className="font-inter font-bold text-[30px] md:text-[34.3px] leading-[45px]  tracking-normal  mb-3 text-gray-900 animate-fade-in-up">
+      {/* Work Smarter Section - Exact match + NEW BROWSE JOBS BUTTON (styled like Home "Discover" button) */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+          <div className="space-y-8">
+            <h2 className="font-bold text-3xl tracking-normal text-gray-900">
               Work Smarter, Not Harder
-            </h1>
-           <p className="text-xl  text-gray-800 mb-4 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
+            </h2>
+            <p className="text-xl text-gray-800">
               At most agencies, you spend 50% of your time on busy work. At Zentrix Media, we don’t want you to do the boring stuff—reporting, scheduling, basic code.
-            </p>
-           <p className="text-xl  text-gray-800 mb-4 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
+           <br/>
               We encourage automation for all the run-of-the-mill tasks so you can spend 100% of your brainpower on Strategy, Creativity, and Innovation and do things that help you grow personally and professionally.
-            </p>
-           <p className="text-xl  text-gray-800 mb-8 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
+<br/>
               We don't care about your university grades. We care about your portfolio, your hunger to learn, and your ability to look at a dataset and see a story.
             </p>
+
+            {/* NEW BUTTON - placed right below the paragraphs, styled exactly like Home page "Discover" button */}
+            <button
+              onClick={scrollToPositions}
+              className="mt-4 px-10 py-4 border-2 border-[#292B97] text-[#292B97] font-semibold rounded-full hover:bg-[#292B97] hover:text-white transition-all duration-300 text-lg inline-flex items-center gap-3"
+            >
+              Browse Jobs
+            </button>
+          </div>
+
+          <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src={Background}
+              alt="Zentrix Media team collaborating"
+              className="w-full h-[400px] object-cover"
+            />
           </div>
         </div>
       </section>
 
-{/* Culture Code */}
-      <section className="relative overflow-hidden py-10" style={{ background: 'linear-gradient(180deg, #111488 0%, #0d1066 100%)' }}>
-        <div className="absolute inset-0 bg-white/10"></div>
-        <div className="relative max-w-6xl mx-auto px-4 md:px-8 text-center">
-         <h1 className="font-inter font-bold text-[30px] md:text-[34.3px] leading-[45px]  tracking-normal  mb-10 text-white animate-fade-in-up">
-            Our Culture Code
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-<div className="group space-y-4 p-6 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-500 ease-out transform hover:-translate-y-2">
-  
-  <FaUsers
-    className="text-6xl text-white mx-auto
-               transition-all duration-500 ease-out
-               group-hover:scale-110
-               group-hover:-translate-y-1
-               group-hover:drop-shadow-[0_0_20px_rgba(236,72,153,0.6)]"
-  />
+      {/* Benefits Section - Exact match */}
+      <section className="py-5 bg-white">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="font-bold text-[34px] leading-[45px] tracking-normal text-gray-900 mb-4">
+            Benefits built for you.
+          </h2>
+          <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+            We support our team with perks that matter. We believe in work-life balance and investing in our people’s long-term success.
+          </p>
 
-  <h2 className="text-xl font-medium text-white
-                 transition-all duration-500
-                 group-hover:translate-y-[-2px]">
-    Zero Ego
-  </h2>
+<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {benefits.map((benefit, index) => {
+    const IconComponent = benefit.icon;
 
-  <p className="text-xl text-white/80
-                transition-all duration-500
-                group-hover:text-white">
-    The intern’s good idea beats the founder’s bad idea. Every time.
-  </p>
+    return (
+      <div
+        key={index}
+        className="border border-gray-100 rounded-3xl p-8 text-left transition-all bg-[#292B97]/5 hover:shadow-lg"
+      >
+        {/* ICON */}
+        <div className="mb-6 w-14 h-14 flex items-center justify-center rounded-2xl bg-[#292B97]/10 shadow-md">
+          <IconComponent className="text-xl text-[#292B97]" />
+        </div>
 
+        {/* TITLE */}
+        <h3 className="font-semibold text-2xl text-gray-900 mb-4">
+          {benefit.title}
+        </h3>
+
+        {/* DESCRIPTION */}
+        <p className="text-gray-600 leading-relaxed">
+          {benefit.desc}
+        </p>
+      </div>
+    );
+  })}
 </div>
-<div className="group space-y-4 p-6 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-1000 ease-out transform hover:-translate-y-2">
-  
-  <FaBrain
-    className="text-6xl text-white mx-auto
-               transition-all duration-500 ease-out
-               group-hover:scale-110
-               group-hover:-translate-y-1
-               group-hover:drop-shadow-[0_0_20px_rgba(236,72,153,0.6)]"
-  />
-
-  <h2 className="text-xl font-medium text-white
-                 transition-all duration-500
-                 group-hover:translate-y-[-2px]">
-   Always Beta
-  </h2>
-
-  <p className="text-xl text-white/80
-                transition-all duration-500
-                group-hover:text-white">
-   We are constantly learning. If you aren't upgrading your skills weekly, you're falling behind.
-  </p>
-
-</div>
-<div className="group space-y-4 p-6 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-500 ease-out transform hover:-translate-y-2">
-  
-  <FaChartLine
-    className="text-6xl text-white mx-auto
-               transition-all duration-500 ease-out
-               group-hover:scale-110
-               group-hover:-translate-y-1
-               group-hover:drop-shadow-[0_0_20px_rgba(236,72,153,0.6)]"
-  />
-
-  <h2 className="text-xl font-medium text-white
-                 transition-all duration-500
-                 group-hover:translate-y-[-2px]">
-   Data-Backed Creativity
-  </h2>
-
-  <p className="text-xl text-white/80
-                transition-all duration-500
-                group-hover:text-white">
-    We don't guess. We test.
-  </p>
-
-</div>
-
-      
-          </div>
         </div>
       </section>
 
-      {/* Why You’ll Love It Here */}
-      <section className="py-13 bg-blue-900/10">
+      {/* Open Positions - Exact match to the new screenshot + WORKING FILTERS + PAGINATION */}
+      <section ref={openPositionsRef} className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-           <h1 className="font-inter font-bold text-[30px] md:text-[34.3px] leading-[45px]  tracking-normal text-center mb-10 text-gray-900 animate-fade-in-up">
-            Why You’ll Love It Here?
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="flex gap-6 items-start">
-                <div className="rounded-xl overflow-hidden shadow-md flex-shrink-0">
-                  <img
-                    src={benefit.img}
-                    alt={benefit.alt}
-                    className="w-32 h-32 md:w-40 md:h-40 object-cover"
-                  />
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
+            <div>
+              <h2 className="font-bold text-[34px] leading-[45px] tracking-normal text-gray-900">Open Positions</h2>
+              <p className="text-xl text-gray-600 mt-1">Join a high-performance team.</p>
+            </div>
+            <div className="mt-4 md:mt-0 px-6 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold inline-flex items-center">
+              {filteredPositions.length} roles available
+            </div>
+          </div>
+
+          {/* WORKING FILTERS */}
+          <div className="flex flex-col md:flex-row gap-4 mb-10">
+            <input
+              type="text"
+              placeholder="Search roles..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="flex-1 px-6 py-2 bg-white border border-gray-200 rounded-2xl focus:outline-none focus:border-[#292B97] text-lg"
+            />
+            <select
+              value={selectedDepartment}
+              onChange={(e) => setSelectedDepartment(e.target.value)}
+              className="px-6 py-2 bg-white border border-gray-200 rounded-2xl focus:outline-none focus:border-[#292B97] text-lg"
+            >
+              {allDepartments.map((dept) => (
+                <option key={dept} value={dept}>
+                  {dept}
+                </option>
+              ))}
+            </select>
+            <select className="px-6 py-2 bg-white border border-gray-200 rounded-2xl focus:outline-none focus:border-[#292B97] text-lg">
+              <option>All Locations</option>
+              <option>Remote</option>
+            </select>
+          </div>
+
+          {/* Job List - UPDATED LAYOUT: Tags stacked on top, title below, smaller tags */}
+          <div className="space-y-4">
+            {displayedPositions.map((position, index) => (
+              <div
+                key={index}
+                    onClick={(e) => {
+                    e.stopPropagation();
+                    setIsTransitioning(true);
+                    setTimeout(() => {
+                      navigate(position.applyLink || "/");
+                    }, 600);
+                  }}
+                className="group bg-white border border-gray-100 hover:border-gray-300 rounded-3xl p-8 flex items-start justify-between transition-all duration-300"
+              >
+                <div className="flex flex-col gap-4">
+                  {/* Tags on top - stacked vertically, made smaller (text-xs -> text-[10px], px-6 py-2 -> px-4 py-1, tracking-[1px] -> tracking-[0.5px]) */}
+                  <div className="flex  gap-2">
+                    <span
+                      className={`px-4 py-1 text-[10px] font-bold uppercase tracking-[0.5px] rounded-full ${getDepartmentStyle(
+                        position.department
+                      )}`}
+                    >
+                      {position.department || "SOFTWARE"}
+                    </span>
+                    <span className="px-4 py-1 text-[10px] font-bold uppercase tracking-[0.5px] bg-emerald-100 text-emerald-700 rounded-full">
+                      FULL-TIME
+                    </span>
+                  </div>
+
+                  {/* Title below */}
+                  <h3 className="text-2xl font-semibold text-gray-900 group-hover:text-[#292B97] transition-colors">
+                    {position.title}
+                  </h3>
                 </div>
-                <div>
-                  <h2 className="text-xl  font-medium mb-3 max-w-4xl mx-auto text-gray-800 leading-tight animate-fade-in-up ">
-                    {benefit.title}
-                  </h2>
-              <p className="text-xl  text-gray-800 mb-4 max-w-4xl mx-auto animate-fade-in-up animation-delay-300">
-                    {benefit.desc}
-                  </p>
-                </div>
+
+               
+             
               </div>
             ))}
           </div>
+
+          {/* LOAD MORE BUTTON (loads 3 more each time) */}
+          {showLoadMore && (
+            <div className="flex justify-center mt-12">
+              <button
+                onClick={() => setVisibleCount((prev) => prev + 3)}
+                className="px-10 py-4 bg-[#292B97] hover:bg-[#1f237a] text-white font-semibold rounded-full transition-all flex items-center gap-3 text-lg"
+              >
+                Load More Positions
+                <FaRocket />
+              </button>
+            </div>
+          )}
+
+          {/* No results message */}
+          {filteredPositions.length === 0 && (
+            <div className="text-center py-12 text-xl text-gray-500">
+              No positions match your search. Try broadening your filters.
+            </div>
+          )}
         </div>
       </section>
 
-    
-   {/* Open Positions - Dynamic from JSON */}
-<section ref={openPositionsRef} className="py-15 bg-gray-900 text-white">
-  <div className="max-w-7xl mx-auto px-6 text-center">
-    <h1 className="font-inter font-bold text-[30px] md:text-[34.3px] leading-[45px]  tracking-normal  mb-6 text-white animate-fade-in-up">
-      Open Positions</h1>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-      {openPositions.map((position, index) => {
-        const IconComponent = {
-          FaBrain: FaBrain,
-          FaChartLine: FaChartLine,
-          FaRocket: FaRocket,
-        }[position.icon];
+      {/* Final CTA (kept from original design) */}
+      <section className="py-16 text-center bg-gray-900">
+        <div className="max-w-4xl mx-auto px-6">
+          <h1 className="text-4xl font-semibold mb-3 text-white leading-tight animate-fade-in-up">
+            Never Miss an Update
+          </h1>
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto mb-10">
+            Subscribe to our newsletter and get the latest marketing insights delivered to your inbox
+          </p>
 
-        return (
-          <div
-            key={index}
-            className="bg-gray-800 rounded-3xl p-8 hover:bg-gray-700 transition-all duration-300 flex flex-col"
-          >
-            {IconComponent && <IconComponent className="text-5xl text-white mx-auto mb-4" />}
-            <h2 className="text-xl  font-medium mb-2 text-white/70 leading-tight animate-fade-in-up">
-              {position.title} <span className="block text-lg text-white">({position.subtitle})</span>
-            </h2>
-            <p p className="text-xl  text-white/80  flex-grow animate-fade-in-up animation-delay-300">{position.description}</p>
-          <button
-  onClick={() => {
-    setIsTransitioning(true);
-    setTargetLink(position.applyLink);
-
-    setTimeout(() => {
-      navigate(position.applyLink);
-    }, 600); // animation duration
-  }}
-  className="mt-8 inline-flex items-center justify-center px-6 py-3 bg-[#292B97] text-white font-semibold rounded-full hover:bg-[#292B97]/90 transition-all duration-300 transform hover:scale-105"
->
-  Apply Now <FaRocket className="ml-2" />
-</button>
-
-          </div>
-        );
-      })}
-    </div>
-  </div>
-</section>
-
-      {/* Final CTA */}
-      <section className="py-15 text-center bg-blue-900/20">
-        <h1 className="font-inter font-bold text-[30px] md:text-[34.3px] leading-[45px]  tracking-normal  mb-3 text-gray-900 animate-fade-in-up">
-          Think you can keep up?<br />Apply to the Future
-        </h1>
-        <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-5">
-          Let’s build something intelligent together.
-        </p>
-        <Link
-          to="/contact"
-          className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#292B97] to-[#6466B6] text-white font-bold text-lg rounded-full hover:bg-[#292B97]/90 transition-all duration-300 transform hover:scale-105 shadow-lg animate-pulse-slow"
-        >
-          Connect Us <FaRocket className="ml-2" />
-        </Link>
+          <form onSubmit={handleSubscribe} className="flex max-w-md mx-auto gap-3">
+            <input
+              type="email"
+              name="email"
+              placeholder="your@email.com"
+              className="flex-1 px-6 py-4 bg-white text-gray-900 rounded-full focus:outline-none focus:border-[#292B97] text-base border border-transparent"
+              required
+            />
+            <button
+              type="submit"
+              disabled={loading}
+              className="px-4 py-2 text-white border border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 text-sm font-medium"
+            >
+              {loading ? "Subscribing..." : "Submit"}
+            </button>
+          </form>
+          {success && (
+            <p className="text-green-400 text-sm mt-2 animate-fadeIn">
+              Successfully Subscribed!
+            </p>
+          )}
+        </div>
       </section>
-{isTransitioning && (
-  <div className="fixed inset-0 z-50 bg-gray-900 flex items-center justify-center animate-fade-out">
-      <h1 className="text-2xl font-medium mb-6 text-white leading-tight animate-fade-in-up animate-scale-up">
-        Preparing Your Application...
-      </h1>
-  </div>
-)}
 
-      <EnquiryModal isOpen={isEnquiryOpen} onClose={closeEnquiry} />
+      {isTransitioning && (
+        <div className="fixed inset-0 z-50 bg-gray-900 flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-3xl font-medium text-white">Preparing Your Application...</h1>
+          </div>
+        </div>
+      )}
+
+  
     </div>
   );
 }

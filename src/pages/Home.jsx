@@ -41,6 +41,7 @@ const serviceConfigs = {
     slug: 'performance',
     icon:'FaPercent',
     title: 'Performance Marketing Services',
+    ctaline:'Performance based lead generation advertising campaigns designed to reach high-intent audiences, control acquisition costs, and convert attention into measurable revenue across digital platforms.',
     headline: 'We Turn ₹1 into ₹4. It’s Not Magic, It’s Math.',
     subheadline: 'Performance marketing is often treated like a slot machine. At Zentrix Media, we treat it like the stock market.',
     introTitle: 'ROAS (Returns on Ad Spend), Conversions, and Data Precision',
@@ -77,6 +78,7 @@ const serviceConfigs = {
     title: 'Public Relations (PR) Services',
     icon:'FaNewspaper',
     headline: 'Get Famous For the Right Reasons and Be the Talk of the Town',
+ ctaline:"Strategic media outreach and brand storytelling that builds credibility, strengthens reputation, and positions your business where influence and visibility matter most.",
     subheadline: 'The days of the dusty press release have become rather obsolete. Modern PR is about Digital Footprint and Narrative Control.',
     introTitle: 'Authority, Trust and Media Presence',
     introText:
@@ -111,6 +113,7 @@ const serviceConfigs = {
     slug: 'seo',
     title: 'SEO Services',
     icon:'FaSearch',
+    ctaline:"Improve search visibility through technical precision, authoritative content, and sustained optimisation that attracts qualified traffic and strengthens long-term organic growth.",
     headline: 'Invisible Brands Go Broke. Let’s Get You Found.',
     subheadline: "SEO isn't just stuffing keywords into a blog post anymore. It has evolved, and continues to do so every day.",
     introTitle: 'Visibility, Organic Growth and Rankings',
@@ -149,7 +152,7 @@ const serviceConfigs = {
     slug: 'social',
     title: 'Social Media Marketing Services',
     icon:'FaVideo',
-
+ctaline:"Consistent, insight-driven social media branding services and strategies that grow communities, encourage meaningful engagement, and turn brand presence into sustained customer relationships.",
     headline: 'Stop the Scroll. Start the Conversation.',
     subheadline: "Most agencies think social media is about 'posting every day.' At Zentrix Media, we know it’s much beyond writing creative captions and posting fancy pictures.",
     introTitle: 'Engagement, Storytelling, and Scroll-stopping Visuals',
@@ -771,18 +774,30 @@ const canGoRight = blogIndex + 3 < latestBlogs.length;
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
-            Elevate Your <br /> Digital Presence
+           An Agency Where Strategy Meets <br/>Measurable Digital Growth
           </h1>
 
           <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-            We are an AI-forward, 360° digital agency turning raw data into vibrant experiences.
-            We help brands stop guessing and start growing
+            From precision SEO and performance advertising to intelligent website experiences, Zentrix
+Media offers full-fledged digital marketing services and helps brands build marketing
+systems designed to attract the right audience, scale visibility, and turn attention into lasting
+business results
           </p>
 
           {/* Buttons - Only Large Screen */}
           <div className="hidden lg:flex gap-4">
-            <button className="px-16 py-3 bg-blue-900 text-white rounded-full font-semibold hover:bg-blue-800 transition duration-300">
-              Book a Call
+            <button 
+              onClick={() => {
+    const Section = document.getElementById('contact');
+    if (Section) {
+      Section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }}
+            className="px-16 py-3 bg-blue-900 text-white rounded-full font-semibold hover:bg-blue-800 transition duration-300">
+            Let’s Grow Your Brand 
             </button>
 
          <button
@@ -797,7 +812,7 @@ const canGoRight = blogIndex + 3 < latestBlogs.length;
   }}
   className="px-16 py-3 border border-blue-900 text-blue-900 rounded-full font-semibold hover:bg-blue-900 hover:text-white transition duration-300"
 >
-  Discover
+Explore Services
 </button>
           </div>
         </div>
@@ -819,7 +834,7 @@ const canGoRight = blogIndex + 3 < latestBlogs.length;
       </div>
     </section>
       {/*360 degree line */}
-      <div className="py-6 bg-blue-900/3">
+      <div className="py-10 bg-blue-900/3">
         <div className="max-w-7xl mx-auto text-center ">
           <h1 className="font-bold text-[30px] text-center text-gray-800 animate-fade-in-up">
             360° Digital Domination
@@ -830,7 +845,7 @@ const canGoRight = blogIndex + 3 < latestBlogs.length;
         </div>
       </div>
       {/*Service section */}
-      <section id="services" className="py-12 bg-white relative">
+      <section id="services" className="scroll-mt-24  py-15 bg-white relative">
         <div className="max-w-7xl mx-auto px-4">
            {/* Decorative Background Circles */}
      {generateCircles(25)}
@@ -1013,7 +1028,7 @@ We help brands stop guessing and start growing
 
 
          {/*testimonias section */}
-   <section className="py-12 relative">
+   <section className="py-20 relative">
       <div className=" px-6">
 <div className="relative mb-12 flex items-center">
   
@@ -1063,7 +1078,7 @@ We help brands stop guessing and start growing
 
 
 {/*contact component */}
-<section className=" relative max-w-7xl mx-auto"> {/* Added subtle bg to reduce 'white white' starkness */}
+<section id="contact" className=" scroll-mt-20  py-12 relative max-w-7xl mx-auto"> {/* Added subtle bg to reduce 'white white' starkness */}
   <p className="text-xl text-[#292B97] font-bold leading-relaxed animate-fade-in-up text-center mb-7">Get In Touch</p>
 <Contactcomp/>
 </section>

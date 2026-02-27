@@ -290,7 +290,15 @@ const Service = () => {
       </p>
 
       <button
-        onClick={openEnquiry}
+                     onClick={() => {
+    const Section = document.getElementById('contact');
+    if (Section) {
+      Section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }}
         className="inline-flex items-center px-8 py-4 bg-[#292B97] text-white font-bold text-lg rounded-full hover:bg-[#292B97]/90 transition-all duration-300 transform hover:scale-105 shadow-lg animate-pulse-slow"
       >
         {config.ctaText} 
@@ -312,7 +320,7 @@ const Service = () => {
   </div>
 </header>
 
-      <EnquiryModal isOpen={isEnquiryOpen} onClose={closeEnquiry} />
+
 
       {/* Intro Section – unchanged */}
       <section className="py-20 bg-blue-900/10">
@@ -336,7 +344,7 @@ const Service = () => {
       </section>
 
       {/* What We Deliver – your original unchanged */}
-    <section className="relative overflow-hidden py-14 md:py-10 ">
+    <section className="relative overflow-hidden py-14 md:py-20 ">
         <div className="absolute inset-0"></div>
         <div className="relative px-4 md:px-8 space-y-8 md:space-y-12">
           <div className="text-center space-y-4">
@@ -355,17 +363,8 @@ const Service = () => {
         </div>
       </section>
 
-      {/* Zentrix Edge – unchanged 
-      <section
-        className="p-12 md:p-16 text-center animate-slide-in bg-blue-900/10"
-        style={{ background: 'linear-gradient(180deg, #111488 0%, #0d1066 100%)' }}
-      >
-        <h1 className="text-4xl font-semibold mb-4 text-white">The Zentrix Edge</h1>
-        <p className="text-xl text-white/80 max-w-4xl mx-auto">{config.zentrixEdge}</p>
-      </section>*/}
-
      {/*contact component */}
-     <section className=" relative max-w-7xl mx-auto py-10"> {/* Added subtle bg to reduce 'white white' starkness */}
+     <section id="contact" className="scroll-mt-20 relative max-w-7xl mx-auto py-10"> {/* Added subtle bg to reduce 'white white' starkness */}
        <p className="text-xl text-[#292B97] font-bold leading-relaxed animate-fade-in-up text-center mb-7">Get In Touch</p>
 <Contactcomp />
      </section>
