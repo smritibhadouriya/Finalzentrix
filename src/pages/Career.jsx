@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaRocket, FaUsers, FaBrain, FaChartLine, FaEnvelope, FaFirstAid } from "react-icons/fa";
+import { FaRocket, FaUsers, FaBrain, FaChartLine, FaEnvelope, FaFirstAid, FaSearch } from "react-icons/fa";
 import EnquiryModal from '../components/Enquiry';
 import { openPositions } from '../Data/Openpositions.js';
 import { useNavigate } from "react-router-dom";
@@ -227,17 +227,23 @@ export default function Careers() {
 
           {/* WORKING FILTERS */}
           <div className="flex flex-col md:flex-row gap-4 mb-10">
-            <input
-              type="text"
-              placeholder="Search roles..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="flex-1 px-6 py-2 bg-white border border-gray-200 rounded-2xl focus:outline-none focus:border-[#292B97] text-lg"
-            />
+          <div className="relative flex-1">
+  {/* Icon */}
+  <FaSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
+
+  {/* Input */}
+  <input
+    type="text"
+    placeholder="Search roles..."
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    className="w-full pl-12 pr-6 py-3 bg-gray-50 border border-gray-300 rounded-2xl focus:outline-none focus:border-[#292B97] focus:bg-white transition-all text-lg"
+  />
+</div>
             <select
               value={selectedDepartment}
               onChange={(e) => setSelectedDepartment(e.target.value)}
-              className="px-6 py-2 bg-white border border-gray-200 rounded-2xl focus:outline-none focus:border-[#292B97] text-lg"
+              className="px-6 py-2 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:border-[#292B97] text-lg"
             >
               {allDepartments.map((dept) => (
                 <option key={dept} value={dept}>
@@ -245,10 +251,7 @@ export default function Careers() {
                 </option>
               ))}
             </select>
-            <select className="px-6 py-2 bg-white border border-gray-200 rounded-2xl focus:outline-none focus:border-[#292B97] text-lg">
-              <option>All Locations</option>
-              <option>Remote</option>
-            </select>
+
           </div>
 
           {/* Job List - UPDATED LAYOUT: Tags stacked on top, title below, smaller tags */}
