@@ -128,7 +128,7 @@
 }
 
 
-::selection {
+/* ::selection {
   background: transparent;
   color: inherit;
 }
@@ -136,7 +136,7 @@
 ::-moz-selection {
   background: transparent;
   color: inherit;
-}
+} */
 
 /* Primary Page Heading (Hero Level) */
 .heading-primary {
